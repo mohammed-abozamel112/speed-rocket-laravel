@@ -19,6 +19,8 @@
 <body class="font-sans antialiased">
     @include('layouts.navigation-guest')
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
+        <!-- The custom cursor element -->
+        <div id="cursorOrb" class="cursor-orb"></div>
 
         {{ $slot }}
 
@@ -26,7 +28,7 @@
     @php
         $isRtl = app()->getLocale() === 'ar';
     @endphp
-<footer class="bg-gradient-to-br from-[#ffffff] via-white to-[#f59b0034] text-[#f59c00]">
+    <footer class="bg-gradient-to-br from-[#ffffff] via-white to-[#f59b0034] text-[#f59c00]">
         <div class="max-w-screen-xl px-4 pt-16 pb-6 mx-auto sm:px-6 lg:px-8 lg:pt-24">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div>

@@ -29,6 +29,44 @@
     --color-slate-900: #c3c7c9;
 }
 
+/* Styles for the custom glowing orb cursor */
+.cursor-orb {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    height: 3rem;
+    pointer-events: none;
+    border-radius: 50%;
+    background-color: #f59c00;
+    opacity: 0.5;
+    transition: transform 0.1s ease-out; /* Slower transition for a more fluid feel */
+    will-change: transform, background-color, box-shadow; /* Optimizing for performance */
+    z-index: 9999;
+    transform: translate(-50%, -50%) scale(0.5); /* Hide it initially */
+    box-shadow: 0 0 10px #f59c00, 0 0 20px #f59c00, 0 0 30px #f59c00,
+        0 0 50px #f59c00;
+}
+
+/* Hover effect on the cursor orb */
+.cursor-orb.hovering {
+    background-color: #fca5a5;
+    box-shadow: 0 0 10px #fca5a5, 0 0 20px #fca5a5, 0 0 30px #fca5a5,
+        0 0 50px #fca5a5;
+    transform: translate(-50%, -50%) scale(1.2); /* Expand on hover */
+}
+
+/* The main content container */
+.content-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* General styles for interactive elements */
+.hover-target {
+    transition: transform 0.3s ease;
+}
+
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;

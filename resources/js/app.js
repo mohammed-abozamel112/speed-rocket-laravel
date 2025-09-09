@@ -4,6 +4,51 @@ import Alpine from "alpinejs";
 window.Alpine = Alpine;
 Alpine.start();
 
+/* mouse */
+const cursorOrb = document.getElementById("cursorOrb");
+const hoverTargets = document.querySelectorAll(".hover-target");
+
+// This is a single, custom cursor object
+const customCursor = {
+    x: 0,
+    y: 0,
+    targetX: 0,
+    targetY: 0,
+    speed: 0.2, // Controls the "lag" of the cursor
+    update: function () {
+        // Smoothly interpolate the orb's position to the mouse's position
+        this.x += (this.targetX - this.x) * this.speed;
+        this.y += (this.targetY - this.y) * this.speed;
+
+        // Apply the new position using CSS transform
+        cursorOrb.style.transform = `translate(${this.x}px, ${this.y}px) scale(1)`;
+        requestAnimationFrame(this.update.bind(this));
+    },
+};
+
+// Event listener for mouse movement
+document.addEventListener("mousemove", (e) => {
+    customCursor.targetX = e.clientX;
+    customCursor.targetY = e.clientY;
+});
+
+// Event listeners for hover effects
+hoverTargets.forEach((target) => {
+    target.addEventListener("mouseenter", () => {
+        cursorOrb.classList.add("hovering");
+    });
+    target.addEventListener("mouseleave", () => {
+        cursorOrb.classList.remove("hovering");
+    });
+});
+
+// Start the animation loop when the window loads
+window.onload = () => {
+    customCursor.update();
+};
+
+/* mouse */
+
 /* ON SCROLL HEADER Nav bg-[#a31621] */
 window.addEventListener("scroll", function () {
     const header = document.querySelector("header");
