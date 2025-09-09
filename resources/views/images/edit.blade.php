@@ -39,6 +39,18 @@
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
+                    {{-- short mg-?short_description-- --}}
+                    <div class="mb-4">
+                        <label for="short_description_en"
+                            class="block text-gray-700 font-bold mb-2">{{ $isRtl ? 'وصف قصير (بالإنجليزية):' : 'Short Description (English):' }}</label>
+                        <input type="text" name="short_description_en" id="short_description_en"
+                            value="{{ old('short_description_en', $image->short_description_en) }}"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                        @error('short_description_en')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
 
                     <div class="mb-4">
                         <label for="caption_en"
@@ -76,6 +88,18 @@
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required>
                         @error('alt_text_ar')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    {{-- short mg-?short_description-- --}}
+                    <div class="mb-4">
+                        <label for="short_description_ar"
+                            class="block text-gray-700 font-bold mb-2">{{ $isRtl ? 'وصف قصير (بالعربية):' : 'Short Description (Arabic):' }}</label>
+                        <input type="text" name="short_description_ar" id="short_description_ar"
+                            value="{{ old('short_description_ar', $image->short_description_ar) }}"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                        @error('short_description_ar')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>

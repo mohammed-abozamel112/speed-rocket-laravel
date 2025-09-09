@@ -1,7 +1,7 @@
 <x-master-layout>
-@php
-    $isRtl = app()->getLocale() === 'ar';
-@endphp
+    @php
+        $isRtl = app()->getLocale() === 'ar';
+    @endphp
     <div class="container mx-auto px-4">
         <h1 class="text-2xl font-bold mb-4">Upload New Image</h1>
 
@@ -30,6 +30,18 @@
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required>
                         @error('alt_text_en')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="short_description_en" class="block text-gray-700 font-bold mb-2">Short Description
+                            (English):</label>
+                        <input type="text" name="short_description_en" id="short_description_en"
+                            value="{{ old('short_description_en') }}"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                        @error('short_description_en')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
@@ -64,6 +76,17 @@
                             class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required>
                         @error('alt_text_ar')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
+                        <label for="short_description_ar" class="block text-gray-700 font-bold mb-2">Short Description
+                            (Arabic):</label>
+                        <input type="text" name="short_description_ar" id="short_description_ar"
+                            value="{{ old('short_description_ar') }}"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required>
+                        @error('short_description_ar')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                         @enderror
                     </div>
@@ -128,14 +151,17 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
-           {{-- add dropdown for tags and services and blogs --}}
+            {{-- add dropdown for tags and services and blogs --}}
             <div class="mb-4">
-                <label for="tag_id" class="block text-gray-700 font-bold mb-2">{{ $isRtl ? __('labels.tag_ar') : __('labels.tag') }}</label>
+                <label for="tag_id"
+                    class="block text-gray-700 font-bold mb-2">{{ $isRtl ? __('labels.tag_ar') : __('labels.tag') }}</label>
                 <select name="tag_id" id="tag_id"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Tag (optional)</option>
                     <?php foreach ($tags as $tag): ?>
-                        <option value="{{ $tag->id }}" {{ old('tag_id', isset($image) ? $image->tag_id : '') == $tag->id ? 'selected' : '' }}>{{ $tag->name }}</option>
+                    <option value="{{ $tag->id }}"
+                        {{ old('tag_id', isset($image) ? $image->tag_id : '') == $tag->id ? 'selected' : '' }}>
+                        {{ $tag->name }}</option>
                     <?php endforeach; ?>
                 </select>
                 @if ($errors->has('tag_id'))
@@ -144,12 +170,15 @@
             </div>
 
             <div class="mb-4">
-                <label for="blog_id" class="block text-gray-700 font-bold mb-2">{{ $isRtl ? __('labels.blog_ar') : __('labels.blog') }}</label>
+                <label for="blog_id"
+                    class="block text-gray-700 font-bold mb-2">{{ $isRtl ? __('labels.blog_ar') : __('labels.blog') }}</label>
                 <select name="blog_id" id="blog_id"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Blog (optional)</option>
                     <?php foreach ($blogs as $blog): ?>
-                        <option value="{{ $blog->id }}" {{ old('blog_id', isset($image) ? $image->blog_id : '') == $blog->id ? 'selected' : '' }}>{{ $blog->title }}</option>
+                    <option value="{{ $blog->id }}"
+                        {{ old('blog_id', isset($image) ? $image->blog_id : '') == $blog->id ? 'selected' : '' }}>
+                        {{ $blog->title }}</option>
                     <?php endforeach; ?>
                 </select>
                 @if ($errors->has('blog_id'))
@@ -158,12 +187,15 @@
             </div>
 
             <div class="mb-4">
-                <label for="service_id" class="block text-gray-700 font-bold mb-2">{{ $isRtl ? __('labels.service_ar') : __('labels.service') }}</label>
+                <label for="service_id"
+                    class="block text-gray-700 font-bold mb-2">{{ $isRtl ? __('labels.service_ar') : __('labels.service') }}</label>
                 <select name="service_id" id="service_id"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Service (optional)</option>
                     <?php foreach ($services as $service): ?>
-                        <option value="{{ $service->id }}" {{ old('service_id', isset($image) ? $image->service_id : '') == $service->id ? 'selected' : '' }}>{{ $service->name }}</option>
+                    <option value="{{ $service->id }}"
+                        {{ old('service_id', isset($image) ? $image->service_id : '') == $service->id ? 'selected' : '' }}>
+                        {{ $service->name }}</option>
                     <?php endforeach; ?>
                 </select>
                 @if ($errors->has('service_id'))
