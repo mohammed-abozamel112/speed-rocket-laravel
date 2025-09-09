@@ -5,28 +5,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables following BigFish design guidelines */
+/* Custom CSS Variables following new palette */
 :root {
-    /* FID Brand Colors */
-    --color-snow: #fcf7f8;
-    --color-madder: #a31621;
-    --color-black: #151515;
-    --color-white: #fff;
-    --color-dark-grey: #717171;
-    --color-mid-grey: #aaa;
-    --color-grey: #b6cbcb;
+    /* New Brand Colors */
+    --color-snow: #ffffff;
+    --color-madder: #f59c00;
+    --color-black: #002a4d;
+    --color-white: #ffffff;
+    --color-dark-grey: #c3c7c9;
+    --color-mid-grey: #c3c7c9;
+    --color-grey: #c3c7c9;
 
     /* Additional palette */
-    --color-slate-50: #f8fafc;
-    --color-slate-100: #f1f5f9;
-    --color-slate-200: #e2e8f0;
-    --color-slate-300: #cbd5e1;
-    --color-slate-400: #94a3b8;
-    --color-slate-500: #64748b;
-    --color-slate-600: #475569;
-    --color-slate-700: #334155;
-    --color-slate-800: #1e293b;
-    --color-slate-900: #0f172a;
+    --color-slate-50: #c3c7c9;
+    --color-slate-100: #c3c7c9;
+    --color-slate-200: #c3c7c9;
+    --color-slate-300: #c3c7c9;
+    --color-slate-400: #c3c7c9;
+    --color-slate-500: #c3c7c9;
+    --color-slate-600: #c3c7c9;
+    --color-slate-700: #c3c7c9;
+    --color-slate-800: #c3c7c9;
+    --color-slate-900: #c3c7c9;
 }
 
 /* Smooth scrolling */
@@ -51,18 +51,18 @@ body {
 
 .glasseff {
     background: rgba(255, 255, 255, 0.384);
-    box-shadow: 0 4px 30px rgba(145, 71, 71, 0.342);
+    box-shadow: 0 4px 30px rgba(245, 156, 0, 0.342);
     backdrop-filter: blur(10.8px);
     -webkit-backdrop-filter: blur(10.8px);
-    border-bottom: 1px solid #a31621;
+    border-bottom: 1px solid #f59c00;
     animation: shrink 0.5s ease-out forwards;
 }
 .glasseff-scroll {
-    background: rgba(190, 153, 153, 0.493);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.164);
+    background: rgba(195, 199, 201, 0.493);
+    box-shadow: 0 4px 30px rgba(0, 42, 77, 0.164);
     backdrop-filter: blur(60px);
     -webkit-backdrop-filter: blur(60px);
-    border-bottom: 1px solid hsla(355, 76%, 36%, 0.397);
+    border-bottom: 1px solid hsla(39, 100%, 50%, 0.397);
     border-radius: 5rem 5rem;
     animation: expand 0.5s ease-in-out forwards;
 }
@@ -205,8 +205,8 @@ body {
     width: 40rem;
     height: 40rem;
     border-radius: 50%;
-    border-top: #a31621 0.2rem solid;
-    border-bottom: #a31621 0.2rem solid;
+    border-top: #f59c00 0.2rem solid;
+    border-bottom: #f59c00 0.2rem solid;
     padding: 1rem;
     object-fit: cover;
     display: block;

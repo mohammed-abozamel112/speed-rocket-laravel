@@ -15,7 +15,7 @@
         <!-- Back Button -->
         <div class="mb-6">
             <a href="{{ route('blogs.index', ['lang' => app()->getLocale()]) }}"
-                class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                class="inline-flex items-center text-[#f59c00] hover:text-[#f59b00c9] transition-colors">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -34,7 +34,7 @@
                         onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'">
                 </div>
             @endif
-            <h1 class="text-4xl font-bold text-[#A31621] mb-4 leading-tight">
+            <h1 class="text-4xl font-bold text-[#f59c00] mb-4 leading-tight">
                 {{ $blog->title }}
             </h1>
 
@@ -52,7 +52,7 @@
                     {{ $blog->created_at->diffForHumans() }}
                 </span>
                 <span
-                    class="bg-{{ $blog->status === 'published' ? 'green' : '#a31621' }}-100 text-{{ $blog->status === 'published' ? 'green' : 'yellow' }}-800 px-2 py-1 rounded-full text-xs">
+                    class="bg-{{ $blog->status === 'published' ? 'green' : '#f59c00' }}-100 text-{{ $blog->status === 'published' ? 'green' : 'yellow' }}-800 px-2 py-1 rounded-full text-xs">
                     {{ ucfirst($blog->status) }}
                 </span>
             </div>
@@ -61,7 +61,7 @@
                 <section class="mt-8 pt-8 border-t border-gray-200">
                     <div class="flex flex-wrap gap-2">
                         @foreach ($blog->tags as $tag)
-                            <span class="bg-[#A31621] text-white px-3 py-1 rounded-full text-sm">
+                            <span class="bg-[#f59c00] text-white px-3 py-1 rounded-full text-sm">
                                 {{ $tag->name }}
                             </span>
                         @endforeach
@@ -75,7 +75,7 @@
         @if ($blog->short_description)
             <section class="mb-8">
                 <div class="p-6 rounded-lg">
-                    <p class="text-lg text-[#a31621] leading-relaxed">
+                    <p class="text-lg text-[#f59c00] leading-relaxed">
                         {{ $blog->short_description }}
                     </p>
                 </div>
@@ -142,17 +142,17 @@
             </h3>
             <div class="flex gap-4">
                 <a href="https://twitter.com/intent/tweet?url={{ urlencode(request()->url()) }}&text={{ urlencode($blog->title) }}"
-                    class="bg-[#A31621] hover:bg-[#a3162257] text-white px-4 py-2 rounded transition-colors"
+                    class="bg-[#f59c00] hover:text-[#f59c00] hover:bg-[#f59b0034] text-white px-4 py-2 rounded transition-colors"
                     target="_blank" rel="noopener">
                     Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->url()) }}"
-                    class="bg-[#A31621] hover:bg-[#a3162257] text-white px-4 py-2 rounded transition-colors"
+                    class="bg-[#f59c00] hover:text-[#f59c00] hover:bg-[#f59b0034] text-white px-4 py-2 rounded transition-colors"
                     target="_blank" rel="noopener">
                     Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(request()->url()) }}"
-                    class="bg-[#A31621] hover:bg-[#a3162296] text-white px-4 py-2 rounded transition-colors"
+                    class="bg-[#f59c00] hover:text-[#f59c00] hover:bg-[#f59b0034] text-white px-4 py-2 rounded transition-colors"
                     target="_blank" rel="noopener">
                     LinkedIn
                 </a>

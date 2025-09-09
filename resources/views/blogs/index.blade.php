@@ -67,7 +67,7 @@
     @endauth
     @guest
         {{-- cards grid  --}}
-         <section id="blogs" class="py-20 w-full relative overflow-hidden text-[#A31621]">
+         <section id="blogs" class="py-20 w-full relative overflow-hidden text-[#f59c00]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">
@@ -85,7 +85,7 @@
                             <div class="flex absolute z-50 top-2 gap-2 px-3">
                                 @foreach ($post->tags as $tag)
                                     <span
-                                        class="bg-[#A31621] hover:bg-red-700 text-white px-2 py-2 rounded-full text-[.5rem] font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
+                                        class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-2 py-2 rounded-full text-[.5rem] font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
                                         {{ $tag->name }}
                                     </span>
                                 @endforeach
@@ -109,7 +109,7 @@
                                 <p class="text-gray-300 mb-4">
                                     {{ Str::limit($post->short_description, 150) }}</p>
                                 <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}"
-                                    class="bg-[#A31621] hover:bg-red-700 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
+                                    class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
                             </div>
                         </a>
                     </div>

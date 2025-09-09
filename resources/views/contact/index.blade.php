@@ -17,7 +17,7 @@
             <div class="max-w-7xl mx-auto {{ $textAlignCenter }}">
                 <div class="mb-8">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-                        <span style="color: #A31621;">{{ $isRtl ? 'تواصل معنا' : 'Get in Touch' }}</span>
+                        <span style="color: #f59c00;">{{ $isRtl ? 'تواصل معنا' : 'Get in Touch' }}</span>
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         {{ $isRtl
@@ -28,7 +28,7 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <button
                         class="px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center"
-                        style="background-color: #A31621; color: #fcf7f9;"
+                        style="background-color: #f59c00; color: #fcf7f9;"
                         onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -40,7 +40,7 @@
                     </button>
                     <button
                         class="px-8 py-6 text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 flex items-center"
-                        style="border-color: #A31621; color: #A31621;"
+                        style="border-color: #f59c00; color: #f59c00;"
                         onclick="document.getElementById('offices').scrollIntoView({ behavior: 'smooth' })">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -62,7 +62,7 @@
                     <div id="contact-form">
                         <div class="shadow-xl border-0 h-full bg-white rounded-lg">
                             <div class="p-6 pb-8">
-                                <h3 class="text-3xl font-bold {{ $textAlign }}" style="color: #A31621;">
+                                <h3 class="text-3xl font-bold {{ $textAlign }}" style="color: #f59c00;">
                                     {{ $isRtl ? 'أرسل لنا رسالة' : 'Send us a Message' }}
                                 </h3>
                                 <p class="text-gray-600 text-lg mt-2 {{ $textAlign }}">
@@ -93,7 +93,7 @@
                                     <div class="grid md:grid-cols-2 gap-6">
                                         <div>
                                             <label class="block text-sm font-semibold mb-2 {{ $textAlign }}"
-                                                style="color: #A31621;">
+                                                style="color: #f59c00;">
                                                 {{ $isRtl ? 'الاسم الكامل *' : 'Full Name *' }}
                                             </label>
                                             <input type="text" name="name" value="{{ old('name') }}"
@@ -106,7 +106,7 @@
                                         </div>
                                         <div>
                                             <label class="block text-sm font-semibold mb-2 {{ $textAlign }}"
-                                                style="color: #A31621;">
+                                                style="color: #f59c00;">
                                                 {{ $isRtl ? 'عنوان البريد الإلكتروني *' : 'Email Address *' }}
                                             </label>
                                             <input type="email" name="email" value="{{ old('email') }}"
@@ -122,7 +122,7 @@
                                     <div class="grid md:grid-cols-2 gap-6">
                                         <div>
                                             <label class="block text-sm font-semibold mb-2 {{ $textAlign }}"
-                                                style="color: #A31621;">
+                                                style="color: #f59c00;">
                                                 {{ $isRtl ? 'رقم الهاتف' : 'Phone Number' }}
                                             </label>
                                             <input type="tel" name="phone" value="{{ old('phone') }}"
@@ -135,7 +135,7 @@
                                         </div>
                                         <div>
                                             <label class="block text-sm font-semibold mb-2 {{ $textAlign }}"
-                                                style="color: #A31621;">
+                                                style="color: #f59c00;">
                                                 {{ $isRtl ? 'الشركة' : 'Company' }}
                                             </label>
                                             <input type="text" name="company" value="{{ old('company') }}"
@@ -149,7 +149,7 @@
                                     </div>
                                     <div>
                                         <label class="block text-sm font-semibold mb-2 {{ $textAlign }}"
-                                            style="color: #A31621;">
+                                            style="color: #f59c00;">
                                             {{ $isRtl ? 'الموضوع *' : 'Subject *' }}
                                         </label>
                                         <input type="text" name="subject" value="{{ old('subject') }}"
@@ -164,7 +164,7 @@
                                     </div>
                                     <div>
                                         <label class="block text-sm font-semibold mb-2 {{ $textAlign }}"
-                                            style="color: #A31621;">
+                                            style="color: #f59c00;">
                                             {{ $isRtl ? 'الرسالة *' : 'Message *' }}
                                         </label>
                                         <textarea name="message" placeholder="{{ $isRtl ? 'أخبرنا عن مشروعك...' : 'Tell us about your project...' }}" required
@@ -178,7 +178,7 @@
                                     </div>
                                     <button type="submit"
                                         class="w-full h-14 text-lg font-semibold transition-all duration-300 hover:scale-[1.02] disabled:scale-100 flex items-center justify-center"
-                                        style="background-color: #A31621; color: #fcf7f9;">
+                                        style="background-color: #f59c00; color: #fcf7f9;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -196,7 +196,7 @@
                     <!-- Contact Information -->
                     <div class="space-y-8">
                         <div>
-                            <h2 class="text-3xl font-bold mb-6 {{ $textAlign }}" style="color: #A31621;">
+                            <h2 class="text-3xl font-bold mb-6 {{ $textAlign }}" style="color: #f59c00;">
                                 {{ $isRtl ? 'معلومات الاتصال' : 'Contact Information' }}
                             </h2>
                             <p class="text-gray-600 text-lg mb-8 {{ $textAlign }}">
@@ -208,19 +208,19 @@
 
                         <div class="space-y-6">
                             <div class="p-6 {{ $borderLeft }} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white rounded-lg shadow"
-                                style="border-left-color: #A31621;">
+                                style="border-left-color: #f59c00;">
                                 <div class="flex items-center space-x-4 {{ $flexReverse }}">
                                     <div class="p-3 rounded-full" style="background-color: #fcf7f9;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            style="color: #A31621;">
+                                            style="color: #f59c00;">
                                             <rect width="20" height="16" x="2" y="4" rx="2" />
                                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                                         </svg>
                                     </div>
                                     <div class="{{ $textAlign }}">
-                                        <h3 class="font-semibold text-lg" style="color: #A31621;">
+                                        <h3 class="font-semibold text-lg" style="color: #f59c00;">
                                             {{ $isRtl ? 'راسلنا عبر البريد الإلكتروني' : 'Email Us' }}</h3>
                                         <a href="mailto:info@fid.sa" class="text-gray-600">info@fid.sa</a>
                                     </div>
@@ -228,19 +228,19 @@
                             </div>
 
                             <div class="p-6 {{ $borderLeft }} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white rounded-lg shadow"
-                                style="border-left-color: #A31621;">
+                                style="border-left-color: #f59c00;">
                                 <div class="flex items-center space-x-4 {{ $flexReverse }}">
                                     <div class="p-3 rounded-full" style="background-color: #fcf7f9;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            style="color: #A31621;">
+                                            style="color: #f59c00;">
                                             <path
                                                 d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                         </svg>
                                     </div>
                                     <div class="{{ $textAlign }}">
-                                        <h3 class="font-semibold text-lg" style="color: #A31621;">
+                                        <h3 class="font-semibold text-lg" style="color: #f59c00;">
                                             {{ $isRtl ? 'اتصل بنا' : 'Call Us' }}</h3>
                                         <a href="tel:+966502057206" class="text-gray-600">+966 50 205 7206</a>
                                     </div>
@@ -248,19 +248,19 @@
                             </div>
 
                             <div class="p-6 {{ $borderLeft }} transition-all duration-300 hover:shadow-lg hover:scale-[1.02] bg-white rounded-lg shadow"
-                                style="border-left-color: #A31621;">
+                                style="border-left-color: #f59c00;">
                                 <div class="flex items-center space-x-4 {{ $flexReverse }}">
                                     <div class="p-3 rounded-full" style="background-color: #fcf7f9;">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                            style="color: #A31621;">
+                                            style="color: #f59c00;">
                                             <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                                             <circle cx="12" cy="10" r="3" />
                                         </svg>
                                     </div>
                                     <div class="{{ $textAlign }}">
-                                        <h3 class="font-semibold text-lg" style="color: #A31621;">
+                                        <h3 class="font-semibold text-lg" style="color: #f59c00;">
                                             {{ $isRtl ? 'زورنا' : 'Visit Us' }}</h3>
                                         <p class="text-gray-600">
                                             {{ $isRtl ? '123 شارع التكنولوجيا، مدينة الابتكار، كاليفورنيا 90210' : '123 Tech Street, Innovation City, CA 90210' }}
@@ -272,14 +272,14 @@
 
                         <!-- Social Media -->
                         <div class="pt-8">
-                            <h3 class="text-xl font-semibold mb-4 {{ $textAlign }}" style="color: #A31621;">
+                            <h3 class="text-xl font-semibold mb-4 {{ $textAlign }}" style="color: #f59c00;">
                                 {{ $isRtl ? 'تابعنا' : 'Follow Us' }}
                             </h3>
                             <div
                                 class="flex {{ $isRtl ? 'justify-end' : 'justify-start' }} space-x-4 {{ $spaceReverse }}">
                                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
                                     class="p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                                    style="background-color: #A31621; color: #fcf7f9;">
+                                    style="background-color: #f59c00; color: #fcf7f9;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -291,7 +291,7 @@
                                 </a>
                                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
                                     class="p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                                    style="background-color: #A31621; color: #fcf7f9;">
+                                    style="background-color: #f59c00; color: #fcf7f9;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -301,7 +301,7 @@
                                 </a>
                                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
                                     class="p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                                    style="background-color: #A31621; color: #fcf7f9;">
+                                    style="background-color: #f59c00; color: #fcf7f9;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -310,7 +310,7 @@
                                 </a>
                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
                                     class="p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
-                                    style="background-color: #A31621; color: #fcf7f9;">
+                                    style="background-color: #f59c00; color: #fcf7f9;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round">
@@ -328,7 +328,7 @@
         </section>
 
         <!-- Final CTA Section -->
-        <section class="py-20 px-4 sm:px-6 lg:px-8 {{ $textAlignCenter }}" style="background-color: #A31621;">
+        <section class="py-20 px-4 sm:px-6 lg:px-8 {{ $textAlignCenter }}" style="background-color: #002a4d;">
             <div class="max-w-4xl mx-auto text-white">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">
                     {{ $isRtl ? 'مستعد للبدء؟' : 'Ready to Get Started?' }}
@@ -341,7 +341,7 @@
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <button
                         class="px-8 py-6 text-lg font-semibold bg-white hover:bg-gray-100 transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center"
-                        style="color: #A31621;"
+                        style="color: #f59c00;"
                         onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -352,7 +352,7 @@
                         {{ $isRtl ? 'ابدأ الآن' : 'Get Started Now' }}
                     </button>
                     <button
-                        class="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-red-600 transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center">
+                        class="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-[#f59c00] transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round" class="h-5 w-5 {{ $marginRight }}">

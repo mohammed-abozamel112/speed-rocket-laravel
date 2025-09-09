@@ -18,8 +18,8 @@
                     <div class="space-y-8 animate-fade-in-up">
                         {{-- Badge --}}
                         <div
-                            class="inline-flex items-center px-4 py-2 rounded-full bg-[#A31621]/10 text-[#A31621] text-sm font-medium">
-                            <span class="w-2 h-2 bg-[#A31621] rounded-full mr-2 animate-pulse"></span>
+                            class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium">
+                            <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
 
                             {{ $img->name }}
                         </div>
@@ -29,7 +29,7 @@
                             <span class="text-gray-900 block">{{ $img->name }}</span>
 
                             <span
-                                class="bg-gradient-to-r from-[#A31621] to-red-600 bg-clip-text text-transparent block leading-normal">
+                                class="bg-gradient-to-r from-[#f59c00] to-[#002a4d] bg-clip-text text-transparent block leading-normal">
                                 {{ $isRtl ? 'كود وابداع' : 'Code & Creativity' }}
                             </span>
                         </h1>
@@ -42,17 +42,17 @@
                         {{-- Statistics --}}
                         <div class="grid grid-cols-3 gap-6 py-6 border-t border-gray-200 dark:border-slate-700">
                             <div>
-                                <div class="text-2xl font-bold text-[#A31621]">150+</div>
+                                <div class="text-2xl font-bold text-[#f59c00]">150+</div>
                                 <div class="text-sm text-gray-600 dark:text-gray-400">
                                     {{ $isRtl ? 'مشاريع' : 'Projects' }}</div>
                             </div>
                             <div>
-                                <div class="text-2xl font-bold text-[#A31621]">98%</div>
+                                <div class="text-2xl font-bold text-[#f59c00]">98%</div>
                                 <div class="text-sm text-gray-600 dark:text-gray-400">
                                     {{ $isRtl ? 'رضا العملاء' : 'Satisfaction' }}</div>
                             </div>
                             <div>
-                                <div class="text-2xl font-bold text-[#A31621]">8+</div>
+                                <div class="text-2xl font-bold text-[#f59c00]">8+</div>
                                 <div class="text-sm text-gray-600 dark:text-gray-400">{{ $isRtl ? 'سنوات' : 'Years' }}
                                 </div>
                             </div>
@@ -61,12 +61,12 @@
                         {{-- CTA Buttons --}}
                         <div class="flex flex-col sm:flex-row gap-4">
                             <a href="#portfolio"
-                                class="bg-[#A31621] hover:bg-red-700 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
+                                class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
                                 {{ $isRtl ? 'عرض أعمالنا' : 'View Our Work' }}
                                 <span class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform">&#8594;</span>
                             </a>
                             <a href="#about"
-                                class="border-[#A31621] text-[#A31621] hover:bg-[#A31621] hover:text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg group">
+                                class="border-[#f59c00] text-[#f59c00] hover:bg-[#f59c00] hover:text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg group">
                                 <span class="mr-2 h-5 w-5">&#9654;</span>
                                 {{ $isRtl ? 'تعلم المزيد' : 'Learn More' }}
                             </a>
@@ -103,7 +103,7 @@
 
                                 {{-- Content --}}
                                 <div class="space-y-4">
-                                    <div class="h-4 bg-gradient-to-r from-[#A31621] to-red-400 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gradient-to-r from-[#f59c00] to-[#002a4d] rounded w-3/4"></div>
                                     <div class="h-3 bg-gray-200 dark:bg-slate-600 rounded w-full"></div>
                                     <div class="h-3 bg-gray-200 dark:bg-slate-600 rounded w-5/6"></div>
                                     <div class="h-3 bg-gray-200 dark:bg-slate-600 rounded w-4/6"></div>
@@ -113,12 +113,12 @@
                                 {{-- Mock Chart --}}
                                 <div class="bg-gray-50 dark:bg-slate-700 rounded-lg p-4">
                                     {{--  <div class="flex items-end space-x-2 h-20">
-                                        <div class="bg-[#A31621] w-6 h-12 rounded-sm"></div>
-                                        <div class="bg-red-400 w-6 h-16 rounded-sm"></div>
-                                        <div class="bg-red-300 w-6 h-10 rounded-sm"></div>
-                                        <div class="bg-[#A31621] w-6 h-20 rounded-sm"></div>
-                                        <div class="bg-red-400 w-6 h-14 rounded-sm"></div>
-                                        <div class="bg-red-300 w-6 h-8 rounded-sm"></div>
+                                        <div class="bg-[#f59c00] w-6 h-12 rounded-sm"></div>
+                                        <div class="bg-[#002a4d] w-6 h-16 rounded-sm"></div>
+                                        <div class="bg-[#c3c7c9] w-6 h-10 rounded-sm"></div>
+                                        <div class="bg-[#f59c00] w-6 h-20 rounded-sm"></div>
+                                        <div class="bg-[#002a4d] w-6 h-14 rounded-sm"></div>
+                                        <div class="bg-[#c3c7c9] w-6 h-8 rounded-sm"></div>
                                     </div> --}}
                                     <img loading="lazy" class="w-full max-h-48 object-cover"
                                         src="{{ asset('storage/' . $img->image) }}" alt="">
@@ -128,12 +128,12 @@
 
                         {{-- Floating Elements --}}
                         <div
-                            class="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-r from-[#A31621] to-red-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl animate-bounce">
+                            class="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-r from-[#f59c00] to-[#002a4d] rounded-2xl flex items-center justify-center text-white font-bold text-xl animate-bounce">
                             <span>⚡</span>
                         </div>
 
                         <div
-                            class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-[#A31621] to-red-600 rounded-xl flex items-center justify-center text-white font-bold animate-pulse">
+                            class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-r from-[#f59c00] to-[#002a4d] rounded-xl flex items-center justify-center text-white font-bold animate-pulse">
                             <span>✨</span>
                         </div>
                     </div>
@@ -143,8 +143,8 @@
 
         {{-- Scroll Indicator --}}
         <a href="#about" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
-            <div class="w-6 h-10 border-2 border-[#A31621] rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-[#A31621] rounded-full mt-2 animate-pulse"></div>
+            <div class="w-6 h-10 border-2 border-[#f59c00] rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-[#f59c00] rounded-full mt-2 animate-pulse"></div>
             </div>
         </a>
     </section>
@@ -154,14 +154,14 @@
         <div
             class="content-about ps-[120px] text-[#c7c7c7c9] select-none max-[1200px]:ps-20 max-[1050px]:ps-16 max-[950px]:text-center max-[950px]:px-[90px] max-[650px]:px-[50px]">
             <h1
-                class="font-['Dancing Script',cursive] text-[clamp(2.5rem,4vw,6rem)] font-bold bg-gradient-to-r from-[#A31621] to-[#A31621] bg-clip-text text-transparent  mb-9 ps-2 max-[650px]:ps-0">
+                class="font-['Dancing Script',cursive] text-[clamp(2.5rem,4vw,6rem)] font-bold bg-gradient-to-r from-[#f59c00] to-[#f59c00] bg-clip-text text-transparent  mb-9 ps-2 max-[650px]:ps-0">
                 {{ app()->getLocale() === 'en' ? 'About Us' : 'من نحن' }}
             </h1>
             <p class="text-[clamp(0.9rem,4vw,1.2rem)] pe-[100px] max-[1200px]:pe-10 max-[990px]:pe-0 pb-8">
                 {{ app()->getLocale() === 'en' ? 'Welcome to our digital agency where every project is a journey into the exquisite world of creative solutions. We are dedicated to bringing you the most innovative and beautifully designed digital experiences that will delight your senses and elevate your brand.' : 'مرحبًا بكم في وكالتنا الرقمية حيث كل مشروع هو رحلة إلى عالم الحلول الإبداعية الرائعة. نحن ملتزمون بتقديم أكثر التجارب الرقمية ابتكارًا وتصميمًا جماليًا التي ستسعد حواسكم وتعزز علامتكم التجارية.' }}
             </p>
             <a href="{{ route('about', app()->getLocale()) }}"
-                class="bg-[#A31621] hover:bg-red-700 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
+                class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
                 {{ app()->getLocale() === 'en' ? 'Explore More' : 'اكتشف المزيد' }}
             </a>
         </div>
@@ -184,17 +184,17 @@
 
     {{-- services section --}}
     <section
-        class="w-full bg-transparent text-[#A31621] mt-20 lg:mt-0 pt-16 bg-gradient-to-br from-[#FCF7F8] via-white to-red-50"
+        class="w-full bg-transparent text-[#f59c00] mt-20 lg:mt-0 pt-16 bg-gradient-to-br from-[#FCF7F8] via-white to-red-50"
         id="services">
         {{-- section for services --}}
         {{-- Section Header --}}
         <div class="text-center mb-16">
             <div
-                class="inline-flex items-center px-4 py-2 rounded-full bg-[#A31621]/10 text-[#A31621] text-sm font-medium mb-6">
-                <span class="w-2 h-2 bg-[#A31621] rounded-full mr-2 animate-pulse"></span>
+                class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
+                <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
                 {{ app()->getLocale() === 'en' ? 'Our Services' : 'خدماتنا' }}
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-[#A31621] mb-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
                 {{ app()->getLocale() === 'en' ? 'Innovative Solutions' : 'حلول مبتكرة' }}
                 <span class="text-gradient">
                     {{ app()->getLocale() === 'en' ? 'in the Industry' : 'في الصناعة' }}
@@ -234,9 +234,9 @@
                                         dd($tag)
                                     @endphp --}}
                                         <a href="{{ route('tags.show', ['lang' => app()->getLocale(), 'tag' => $tag->id]) }}"
-                                            class="border border-[#f3f3f3] hover:border-[#A31621] text-[#A31621]
+                                            class="border border-[#f3f3f3] hover:border-[#f59c00] text-[#f59c00]
           bg-gradient-to-br from-[#FCF7F8] via-white to-red-50
-          hover:bg-none hover:bg-[#A31621] hover:text-white
+          hover:bg-none hover:bg-[#f59c00] hover:text-white
           px-3 py-3 rounded-full text-sm font-medium
           transition-all duration-700 ease-in-out    hover:shadow-lg group text-center"
                                             target="_self" rel="noopener noreferrer">
@@ -273,11 +273,11 @@
                 {{-- Section Header --}}
                 <div class="text-center mb-16">
                     <div
-                        class="inline-flex items-center px-4 py-2 rounded-full bg-[#A31621]/10 text-[#A31621] text-sm font-medium mb-6">
-                        <span class="w-2 h-2 bg-[#A31621] rounded-full mr-2 animate-pulse"></span>
+                        class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
                         {{ app()->getLocale() === 'en' ? 'Our Portfolio' : 'أعمالنا' }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-[#A31621] mb-6">
+                    <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
                         {{ app()->getLocale() === 'en' ? 'Success Stories & ' : 'قصص النجاح و' }}
                         <span
                             class="text-gradient">{{ app()->getLocale() === 'en' ? 'Project Showcase' : 'عرض المشاريع' }}</span>
@@ -292,13 +292,13 @@
                 <div class="mb-8">
                     <div class="flex flex-wrap gap-2 w-full justify-center">
                         <button
-                            class="px-4 py-2 rounded-full bg-[#A31621]/10 text-[#A31621] text-sm font-medium hover:bg-[#A31621]/20 transition"
+                            class="px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium hover:bg-[#f59c00]/20 transition"
                             onclick="filterPortfolio('')">
                             {{ app()->getLocale() === 'en' ? 'All' : 'الكل' }}
                         </button>
                         @foreach ($portfolioProjects->pluck('category')->unique() as $category)
                             <button
-                                class="px-4 py-2 rounded-full bg-[#A31621]/10 text-[#A31621] text-sm font-medium hover:bg-[#A31621]/20 transition"
+                                class="px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium hover:bg-[#f59c00]/20 transition"
                                 data-filter="{{ $category }}" onclick="filterPortfolio('{{ $category }}')">
                                 {{ $category }}
                             </button>
@@ -318,7 +318,7 @@
                                     class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                                     loading="lazy" />
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-red-900/20 to-red-500/20 opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
+                                    class="absolute inset-0 bg-gradient-to-t from-[#f59c00] to-[#f59b0034] opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center">
                                     <div
                                         class="flex flex-col text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                                         <span class="inline-block mb-2">
@@ -338,13 +338,13 @@
                             <div class="p-6 space-y-4">
                                 <div class="flex items-center justify-between">
                                     <span
-                                        class="text-sm text-[#A31621] font-medium bg-[#A31621]/10 px-3 py-1 rounded-full">
+                                        class="text-sm text-[#f59c00] font-medium bg-[#f59c00]/10 px-3 py-1 rounded-full">
                                         {{ $project->category }}
                                     </span>
                                     <div class="flex space-x-2">
                                         @if ($project->github_url)
                                             <a href="{{ $project->github_url }}" target="_blank"
-                                                class="p-2 text-gray-400 hover:text-[#A31621] transition-colors">
+                                                class="p-2 text-gray-400 hover:text-[#f59c00] transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
                                                     fill="currentColor" viewBox="0 0 24 24">
                                                     <path
@@ -353,7 +353,7 @@
                                             </a>
                                         @endif
                                         {{--  @if ($project->external_url)
-                                            <a href="{{ $project->external_url }}" target="_blank" class="p-2 text-gray-400 hover:text-[#A31621] transition-colors">
+                                            <a href="{{ $project->external_url }}" target="_blank" class="p-2 text-gray-400 hover:text-[#f59c00] transition-colors">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 3h7v7m0 0L10 21l-7-7 11-11z"/></svg>
                                             </a>
                                         @endif --}}
@@ -361,7 +361,7 @@
                                 </div>
                                 <div>
                                     <h3
-                                        class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#A31621] transition-colors">
+                                        class="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#f59c00] transition-colors">
                                         {{ $project->title }}
                                     </h3>
                                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -379,7 +379,7 @@
                                 </div>
                                 {{--   <div class="pt-4 border-t border-gray-200 dark:border-slate-700">
                                         <div
-                                            class="text-[#A31621] font-medium text-sm group-hover:underline flex items-center">
+                                            class="text-[#f59c00] font-medium text-sm group-hover:underline flex items-center">
                                             {{ app()->getLocale() === 'en' ? 'View Case Study' : 'عرض دراسة الحالة' }}
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform"
@@ -406,24 +406,24 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-[#A31621] mb-2">95%</div>
+                            <div class="text-3xl font-bold text-[#f59c00] mb-2">95%</div>
                             <div class="text-gray-600 dark:text-gray-300">
                                 {{ app()->getLocale() === 'en' ? 'Client Retention Rate' : 'معدل الاحتفاظ بالعملاء' }}
                             </div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-[#A31621] mb-2">2.5x</div>
+                            <div class="text-3xl font-bold text-[#f59c00] mb-2">2.5x</div>
                             <div class="text-gray-600 dark:text-gray-300">
                                 {{ app()->getLocale() === 'en' ? 'Average ROI Increase' : 'متوسط زيادة العائد' }}
                             </div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-[#A31621] mb-2">40%</div>
+                            <div class="text-3xl font-bold text-[#f59c00] mb-2">40%</div>
                             <div class="text-gray-600 dark:text-gray-300">
                                 {{ app()->getLocale() === 'en' ? 'Traffic Growth' : 'نمو الزيارات' }}</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-[#A31621] mb-2">24/7</div>
+                            <div class="text-3xl font-bold text-[#f59c00] mb-2">24/7</div>
                             <div class="text-gray-600 dark:text-gray-300">
                                 {{ app()->getLocale() === 'en' ? 'System Uptime' : 'تشغيل النظام' }}</div>
                         </div>
@@ -431,7 +431,7 @@
                 </div>
 
                 {{-- CTA Section --}}
-                <div class="text-center bg-gradient-to-r from-[#A31621] to-red-600 rounded-3xl p-8 md:p-12 text-white">
+                <div class="text-center bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-3xl p-8 md:p-12 text-white">
                     <h3 class="text-3xl md:text-4xl font-bold mb-4">
                         {{ app()->getLocale() === 'en' ? 'Ready to Start Your Success Story?' : 'هل أنت مستعد لبدء قصة نجاحك؟' }}
                     </h3>
@@ -441,7 +441,7 @@
                             : 'انضم إلى مجموعة مشاريعنا الناجحة. دعنا نبتكر شيئًا مذهلاً معًا يحقق نتائج حقيقية.' }}
                     </p>
                     <a href="#contact"
-                        class="bg-white text-[#A31621] hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group inline-flex items-center justify-center">
+                        class="bg-white text-[#f59c00] hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group inline-flex items-center justify-center">
                         {{ app()->getLocale() === 'en' ? 'Start Your Project' : 'ابدأ مشروعك' }}
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
@@ -465,11 +465,11 @@
                 {{-- Section Header --}}
                 <div class="text-center mb-16">
                     <div
-                        class="inline-flex items-center px-4 py-2 rounded-full bg-[#A31621]/10 text-[#A31621] text-sm font-medium mb-6">
-                        <span class="w-2 h-2 bg-[#A31621] rounded-full mr-2 animate-pulse"></span>
+                        class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
                         {{ app()->getLocale() === 'en' ? 'Our Partners' : 'شركاؤنا' }}
                     </div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-[#A31621] mb-6">
+                    <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
                         {{ app()->getLocale() === 'en' ? 'Trusted by the best' : 'موثوق به من قبل الأفضل' }}
 
                         <span
@@ -500,9 +500,9 @@
     <section id="reviews" class="py-20 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#A31621]">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-[#f59c00]">
                     {{ $isRtl ? 'ماذا يقول عملاؤنا' : 'What Our' }}
-                    <span class="bg-gradient-to-r from-[#A31621] to-[#a3162242] bg-clip-text text-transparent">
+                    <span class="bg-gradient-to-r from-[#f59c00] to-[#f59b0056] bg-clip-text text-transparent">
                         {{ $isRtl ? 'العملاء' : 'Clients' }}
                     </span>
                     {{ $isRtl ? 'عنا' : 'Say' }}
@@ -517,8 +517,8 @@
             <div class="grid md:grid-cols-2 gap-8">
                 @foreach ($latestReviews as $review)
                     <div
-                        class="relative p-8 rounded-2xl bg-[#a3162223] hover:shadow-xl transition-all duration-300 hover:scale-105 {{ $isRtl ? 'text-right' : 'text-left' }}">
-                        <div class="absolute top-4 {{ $isRtl ? 'right-4' : 'left-4' }} text-[#A31621] opacity-20">
+                        class="relative p-8 rounded-2xl bg-[#f59b0034] hover:shadow-xl transition-all duration-300 hover:scale-105 {{ $isRtl ? 'text-right' : 'text-left' }}">
+                        <div class="absolute top-4 {{ $isRtl ? 'right-4' : 'left-4' }} text-[#f59c00] opacity-20">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path
@@ -531,7 +531,7 @@
                                 alt="{{ $review->name }}"
                                 class="w-16 h-16 rounded-full object-cover {{ $isRtl ? 'mr-4' : 'ml-4' }}">
                             <div class="{{ $isRtl ? 'text-right' : 'text-left' }}">
-                                <h4 class="text-lg font-semibold text-[#A31621]">{{ $review->name }}</h4>
+                                <h4 class="text-lg font-semibold text-[#f59c00]">{{ $review->name }}</h4>
                             </div>
                         </div>
 
@@ -557,7 +557,7 @@
                 @endphp
                 <div class="mt-12 text-center">
                     <div
-                        class="inline-flex items-center px-6 py-3 rounded-full bg-[#a3162223] border border-gray-200 {{ $isRtl ? 'flex-row-reverse' : '' }}">
+                        class="inline-flex items-center px-6 py-3 rounded-full bg-[#f59b0034] border border-gray-200 {{ $isRtl ? 'flex-row-reverse' : '' }}">
                         <div class="flex {{ $isRtl ? 'mr-3' : 'ml-3' }} text-yellow-400">
                             @for ($i = 1; $i <= 5; $i++)
                                 @if ($i <= floor($averageRating))
@@ -586,7 +586,7 @@
 
     {{-- blogs --}}
 
-    <section id="blogs" class="py-20 w-full relative overflow-hidden text-[#A31621]">
+    <section id="blogs" class="py-20 w-full relative overflow-hidden text-[#f59c00]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">
@@ -604,7 +604,7 @@
                             <div class="flex absolute z-50 top-2 gap-2 px-3">
                                 @foreach ($post->tags as $tag)
                                     <span
-                                        class="bg-[#A31621] hover:bg-red-700 text-white px-2 py-2 rounded-full text-[.5rem] font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
+                                        class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-2 py-2 rounded-full text-[.5rem] font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
                                         {{ $tag->name }}
                                     </span>
                                 @endforeach
@@ -628,7 +628,7 @@
                                 <p class="text-gray-300 mb-4">
                                     {{ Str::limit($post->short_description, 150) }}</p>
                                 <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}"
-                                    class="bg-[#A31621] hover:bg-red-700 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
+                                    class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
                             </div>
                         </a>
                     </div>
