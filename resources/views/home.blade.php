@@ -30,7 +30,7 @@
 
                             <span
                                 class="bg-gradient-to-r from-[#f59c00] to-[#002a4d] bg-clip-text text-transparent block leading-normal">
-                                {{ $isRtl ? 'كود وابداع' : 'Code & Creativity' }}
+                                {{ $img->short_description }}
                             </span>
                         </h1>
 

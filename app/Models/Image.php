@@ -15,6 +15,8 @@ class Image extends Model
         'image',
         'alt_text_ar',
         'alt_text_en',
+        'short_description_ar',
+        'short_description_en',
         'caption_ar',
         'caption_en',
         'type_ar',
@@ -46,6 +48,12 @@ class Image extends Model
         $locale = app()->getLocale();
         $column = 'type_' . $locale;
         return $this->{$column} ?? $this->type_en;
+    }
+    public function getShortDescriptionAttribute()
+    {
+        $locale = app()->getLocale();
+        $column = 'short_description_' . $locale;
+        return $this->{$column} ?? $this->short_description_en;
     }
     // tag relation
     public function tag()

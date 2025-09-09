@@ -19,6 +19,10 @@ return new class extends Migration {
             // alt text and caption ar and en
             $table->string('alt_text_ar')->nullable();
             $table->string('alt_text_en')->nullable();
+            // short description ar and en
+            $table->string('short_description_ar')->nullable();
+            $table->string('short_description_en')->nullable();
+            // caption ar and en
             $table->string('caption_ar')->nullable();
             $table->string('caption_en')->nullable();
             // type of the image (e.g., blog, service, etc.)

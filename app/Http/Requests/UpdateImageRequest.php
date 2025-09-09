@@ -25,11 +25,13 @@ class UpdateImageRequest extends FormRequest
         return [
             'name_ar' => 'nullable|string|max:255',
             'name_en' => 'nullable|string|max:255',
-             'image' => 'required|file|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'image' => 'required|file|mimes:jpeg,png,jpg,gif,svg,webp|max:4048',
             'alt_text_ar' => 'nullable|string|max:255',
             'alt_text_en' => 'nullable|string|max:255',
-            'caption_ar' => 'nullable|string|max:255',
-            'caption_en' => 'nullable|string|max:255',
+            'short_description_ar' => 'nullable|string|max:100',
+            'short_description_en' => 'nullable|string|max:100',
+            'caption_ar' => 'nullable|string|max:1000',
+            'caption_en' => 'nullable|string|max:1000',
             'type_ar' => [
                 'required',
                 Rule::in(['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول']),
