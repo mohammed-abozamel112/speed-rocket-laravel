@@ -26,7 +26,7 @@ class UpdateTagRequest extends FormRequest
             'name_en' => 'nullable|string|max:255',
             'description_ar' => 'nullable|string|max:1000',
             'description_en' => 'nullable|string|max:1000',
-            'url' => 'nullable|url|max:2048',
+            'image' => 'nullable|image|file|mimes:jpeg,png,jpg,gif,svg,webp|max:4048',
             'service_id' => 'nullable|exists:services,id',
             'blog_id' => 'nullable|exists:blogs,id',
         ];

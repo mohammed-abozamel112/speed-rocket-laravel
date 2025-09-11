@@ -20,7 +20,7 @@
 
             @if ($tag->link)
                 <a href="{{ $tag->link }}"
-                    class="mt-4 inline-block px-6 py-2 bg-[#A31621] text-white rounded-full hover:bg-[#A31621]/90 transition animate-on-scroll">
+                    class="mt-4 inline-block px-6 py-2 bg-[#f59c00] text-white rounded-full hover:bg-[#f59c00]/90 transition animate-on-scroll">
                     {{ app()->getLocale() === 'en' ? 'Learn More' : 'المزيد' }}
                 </a>
             @endif

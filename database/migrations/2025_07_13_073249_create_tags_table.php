@@ -18,8 +18,8 @@ return new class extends Migration {
             // description for ar and en
             $table->text('description_ar')->nullable();
             $table->text('description_en')->nullable();
-            // url for the tag
-            $table->string('url')->nullable();
+            //image of tag
+            $table->string('image')->nullable();
             // foreign ID key for services and blogs
             $table->foreignId('service_id')->nullable()->constrained('services')->onDelete('cascade');
             $table->foreignId('blog_id')->nullable()->constrained('blogs')->onDelete('cascade');

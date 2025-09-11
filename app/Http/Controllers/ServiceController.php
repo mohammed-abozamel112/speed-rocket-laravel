@@ -18,6 +18,8 @@ class ServiceController extends Controller
     {
         // Get all services with their tags (for the filter buttons) with pagination
         $services = Service::with('tags')->paginate(10);
+        // get images with type service_id max 5 images
+        $servicesImages = Image::whereNotNull('service_id')->take(5)->get();
 
         // Handle the filtering logic
         if (request()->has('filter')) {
@@ -30,7 +32,7 @@ class ServiceController extends Controller
             // $filteredTags = Tag::whereHas('service')->get()->unique('id');
         }
 
-        return view('services.index', compact('services', 'filteredTags'));
+        return view('services.index', compact('services','servicesImages', 'filteredTags'));
     }
 
 
@@ -71,10 +73,12 @@ class ServiceController extends Controller
     public function show($lang, Service $service)
     {
         $tags = $service->tags;
+        // images with the given
+        $servicesImages = Image::where('service_id', $service->id)->get();
         //service from images with service_id
-        $imagesTag=Image::where('service_id', $service->id)->get();
+        $imagesTag = Image::where('service_id', $service->id)->get();
 
-        return view('services.show', compact('service', 'tags', 'imagesServices'));
+        return view('services.show', compact('service', 'tags', 'imagesTag', 'servicesImages'));
     }
 
     /**

@@ -1,5 +1,7 @@
 <x-master-layout>
-
+    @php
+        $isRtl = app()->getLocale() === 'ar';
+    @endphp
     @auth
         <div class="container mx-auto p-4">
             @if (session('success'))
@@ -85,27 +87,63 @@
     @endauth
 
     @guest
-        <section class="w-full min-h-screen flex flex-col justify-center items-center"
-            style="background: url('{{ asset('storage/servicesmain.png') }}'); background-size: cover; background-position: center;">
-            <h1 class="text-3xl font-bold mb-6">{{ __('Our Services') }}</h1>
-            <p class="text-lg text-center">{{ __('Explore our range of services tailored to your needs.') }}</p>
+        <style>
+            .slide:hover {
+                flex: 6;
+            }
 
+            .slide {
+                transition: all 1200ms ease-in-out;
+            }
 
-        </section>
+            .vertical-text {
+                writing-mode: vertical-lr;
+                transform: rotate(180deg);
+                transform-origin: center center;
+            }
+
+            @media (max-width: 768px) {
+                .vertical-text {
+                    writing-mode: horizontal-tb;
+                    transform: rotate(0deg);
+                }
+            }
+        </style>
+        <div class="flex w-full h-screen pt-0 pb-4 items-center justify-center">
+            <div class="flex flex-col md:flex-row w-full h-[100%]">
+                @foreach ($servicesImages as $slider)
+                    <div class="slide relative flex-auto bg-cover bg-center transition-all duration-500 ease-in-out hover:flex-grow group"
+                        style="background-image:url('{{ asset('storage/' . $slider->image) }}')">
+
+                        <div
+                            class="w-full absolute inset-y-0 left-0 flex md:items-center justify-center md:justify-start items-end pointer-events-none p-4
+                            transition-opacity duration-300 group-hover:opacity-0">
+                            <h2 class="text-[#f59c00] text-8xl font-bold vertical-text py-2">{{ $slider->name }}</h2>
+                        </div>
+
+                        <div
+                            class="absolute {{ $isRtl ? 'bottom-0 right-0' : 'bottom-0 left-0' }} inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <h2 class="text-[#f59c00] text-6xl font-bold leading-normal">{{ $slider->name }}</h2>
+                            <p class="text-white">{{ $slider->caption }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
         {{--  create a filter of services to show only their tags  --}}
         {{-- Filter Buttons --}}
         <div class="mb-8">
             <div class="flex flex-wrap gap-2 w-full justify-center">
                 {{-- All Services Button --}}
                 <button type="button" data-filter="all"
-                    class="filter-btn px-4 py-2 rounded-full {{ !request()->has('filter') ? 'bg-[#A31621] text-white' : 'bg-[#A31621]/10 text-[#A31621]' }} text-sm font-medium hover:bg-[#A31621]/20 transition">
+                    class="filter-btn px-4 py-2 rounded-full {{ !request()->has('filter') ? 'bg-[#f59c00] text-white' : 'bg-[#f59c00]/10 text-[#f59c00]' }} text-sm font-medium hover:bg-[#f59c00]/20 transition">
                     {{ app()->getLocale() === 'en' ? 'All' : 'الكل' }}
                 </button>
 
                 {{-- Service Filter Buttons --}}
                 @foreach ($services as $service)
                     <button type="button" data-filter="{{ $service->id }}"
-                        class="filter-btn px-4 py-2 rounded-full {{ request('filter') == $service->id ? 'bg-[#A31621] text-white' : 'bg-[#A31621]/10 text-[#A31621]' }} text-sm font-medium hover:bg-[#A31621]/20 transition">
+                        class="filter-btn px-4 py-2 rounded-full {{ request('filter') == $service->id ? 'bg-[#f59c00] text-white' : 'bg-[#f59c00]/10 text-[#f59c00]' }} text-sm font-medium hover:bg-[#f59c00]/20 transition">
                         {{ $service->name }}
                     </button>
                 @endforeach
@@ -114,7 +152,7 @@
 
         {{-- Loading Spinner --}}
         <div id="loading-spinner" class="hidden flex justify-center items-center py-8">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#A31621]"></div>
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[#f59c00]"></div>
         </div>
 
         {{-- Filtered Tags Display --}}

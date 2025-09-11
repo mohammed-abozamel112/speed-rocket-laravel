@@ -14,7 +14,7 @@ class Tag extends Model
         'name_en',
         'description_ar',
         'description_en',
-        'url',
+        'image',
         'service_id',
         'blog_id',
         
