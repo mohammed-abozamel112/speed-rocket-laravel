@@ -101,30 +101,30 @@
 
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-2 md:grid-cols-2">
                     {{--  <div class="text-center sm:text-left">
-                        <p class="text-lg font-medium text-[#A31621]">About Us</p>
+                        <p class="text-lg font-medium text-[#f59c00]">About Us</p>
 
                         <nav class="mt-8">
                             <ul class="space-y-4 text-sm">
                                 <li>
-                                    <a class="text-[#A31621] transition hover:text-[#A31621]/75" href="/">
+                                    <a class="text-[#f59c00] transition hover:text-[#f59c00]/75" href="/">
                                         Company History
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a class="text-[#A31621] transition hover:text-[#A31621]/75" href="/">
+                                    <a class="text-[#f59c00] transition hover:text-[#f59c00]/75" href="/">
                                         Meet the Team
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a class="text-[#A31621] transition hover:text-[#A31621]/75" href="/">
+                                    <a class="text-[#f59c00] transition hover:text-[#f59c00]/75" href="/">
                                         Employee Handbook
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a class="text-[#A31621] transition hover:text-[#A31621]/75" href="/">
+                                    <a class="text-[#f59c00] transition hover:text-[#f59c00]/75" href="/">
                                         Careers
                                     </a>
                                 </li>

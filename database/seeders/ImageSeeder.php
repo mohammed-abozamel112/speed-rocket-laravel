@@ -16,20 +16,30 @@ class ImageSeeder extends Seeder
 
         $images = [
             [
-                'name_ar' => 'شركة فيد للتسويق',
-                'name_en' => 'Fid Marketing Company',
+                /* first image*/
+                'name_ar' => 'شركة سبيد روكيت',
+                'name_en' => 'Speed Rocket Company',
 
-                'image' => 'images/fid.png',
-                'alt_text_ar' => 'نهج شركة فيد الاستراتيجي يحول رؤيتك إلى نجاح. نصوغ قصصًا مؤثرة لعلامتك التجارية، ونقدمها لجمهورك برؤى بيانات واستراتيجيات مبتكرة، ملتزمين بفهم احتياجاتك الفريدة وبناء اتصال دائم مع عملائك لتحقيق النمو والنجاح لعلامتك التجارية.
-',
-                'alt_text_en' => 'FID Marketing transforms your vision into success. We build compelling brand stories, using data-driven insights and innovative strategies to connect you with your audience, foster lasting customer relationships, and drive brand growth.',
-                'short_description_ar' => 'نهج شركة فيد الاستراتيجي يحول رؤيتك إلى نجاح.',
-                'short_description_en' => 'FID Marketing transforms your vision into success.',
-                'caption_ar' => 'نهج شركة فيد الاستراتيجي يحول رؤيتك إلى نجاح. نصوغ قصصًا مؤثرة لعلامتك التجارية، ونقدمها لجمهورك برؤى بيانات واستراتيجيات مبتكرة، ملتزمين بفهم احتياجاتك الفريدة وبناء اتصال دائم مع عملائك لتحقيق النمو والنجاح لعلامتك التجارية.
-',
-                'caption_en' => 'FID Marketing transforms your vision into success. We build compelling brand stories, using data-driven insights and innovative strategies to connect you with your audience, foster lasting customer relationships, and drive brand growth.',
+                'image' => 'images/main.png',
+
+                'alt_text_ar' => 'شركة سبيد روكيت تقدم خدمات استيراد احترافية من الصين بسرعة وكفاءة.',
+                'alt_text_en' => 'Speed Rocket offers professional and efficient import services from China.',
+
+                'short_description_ar' => 'الجوده والكفاءة.',
+                'short_description_en' => 'Quality and efficiency.',
+
+                'caption_ar' => 'لأننا نؤمن بأهمية الكفاءة، نوفر في سبيد روكيت كل ما تحتاجه لاستيراد منتجاتك من الصين بأعلى جودة وأفضل سعر، بالإضافة إلى ذلك، ننهي جميع الإجراءات اللوجستية والجمركية بسرعة فائقة. تستند خدماتنا إلى خبرة طويلة في السوق الصيني وشبكة علاقات قوية مع المصانع والموردين، وهذا يضمن لك إدارة كاملة لعملية الاستيراد من المصدر وحتى باب مستودعك، مع التزام تام بأعلى معايير الجودة والدقة.',
+                'caption_en' => 'At Speed Rocket, we believe in the importance of efficiency. We provide everything you need to import your products from China with top quality and the best price. Additionally, we handle all logistical and customs procedures swiftly. Our services are backed by deep experience in the Chinese market and a strong network of factories and suppliers, ensuring end-to-end management of your import process with a full commitment to the highest standards of quality and accuracy.',
+
                 'type_ar' => 'الرئيسية',
                 'type_en' => 'home',
+
+                'service_id' => null,
+                'blog_id' => null,
+                'tag_id' => null,
+
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name_ar' => 'جلسة استراتيجية التسويق',

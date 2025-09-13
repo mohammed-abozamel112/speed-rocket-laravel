@@ -15,9 +15,10 @@ class Tag extends Model
         'description_ar',
         'description_en',
         'image',
+        'price',
         'service_id',
         'blog_id',
-        
+
     ];
     // Dynamic accessor for name attribute based on locale
     public function getNameAttribute()

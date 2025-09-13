@@ -36,10 +36,8 @@ return new class extends Migration {
             $table->string('image')->nullable();
             // status of the service
             $table->boolean('status')->default(true);
-            /*             // order of the service
-                        $table->integer('order')->default(0); */
             // price of service
-            $table->decimal('price', 10, 2);
+            /* $table->decimal('price', 10, 2); */
             // timestamps
             $table->timestamps();
         });

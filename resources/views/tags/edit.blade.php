@@ -46,17 +46,39 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+                {{-- price --}}
+                <div class="mb-4">
+                    <label for="price"
+                        class="block text-sm font-medium text-gray-700 mb-2">{{ app()->getLocale() === 'en' ? 'Tag Price' : 'السعر' }}</label>
+                    <input type="number" name="price" id="price" value="{{ old('price', $tag->price) }}"
+                        step="0.01" min="0"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        required>
+                    @error('price')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
 
-                {{-- image --}}
                 <div class="mb-4">
                     <label for="image" class="block text-sm font-medium text-gray-700 mb-2">Tag Image</label>
+
+                    {{-- Show current image if exists --}}
+                    @if (isset($tag) && $tag->image)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $tag->image) }}" alt="Current Image"
+                                class="w-32 h-auto rounded shadow">
+                        </div>
+                    @endif
+
                     <input type="file" name="image" id="image"
                         class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         accept="image/*">
+
                     @error('image')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
 
                 <div class="flex justify-end">
                     <a href="{{ route('tags.index', ['lang' => app()->getLocale()]) }}"

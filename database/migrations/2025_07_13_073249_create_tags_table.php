@@ -20,6 +20,8 @@ return new class extends Migration {
             $table->text('description_en')->nullable();
             //image of tag
             $table->string('image')->nullable();
+            //price of tag
+            $table->decimal('price', 8, 2)->nullable()->default(0);
             // foreign ID key for services and blogs
             $table->foreignId('service_id')->nullable()->constrained('services')->onDelete('cascade');
             $table->foreignId('blog_id')->nullable()->constrained('blogs')->onDelete('cascade');

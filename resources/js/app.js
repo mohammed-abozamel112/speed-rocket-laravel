@@ -49,7 +49,7 @@ window.onload = () => {
 
 /* mouse */
 
-/* ON SCROLL HEADER Nav bg-[#a31621] */
+/* ON SCROLL HEADER Nav bg-[#f59c00] */
 window.addEventListener("scroll", function () {
     const header = document.querySelector("header");
     const nav = document.querySelector("header nav");
@@ -96,11 +96,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Update active button styles
             filterButtons.forEach((btn) => {
-                btn.classList.remove("bg-[#A31621]", "text-white");
-                btn.classList.add("bg-[#A31621]/10", "text-[#A31621]");
+                btn.classList.remove("bg-[#f59c00]", "text-white");
+                btn.classList.add("bg-[#f59c00]/10", "text-[#f59c00]");
             });
-            this.classList.remove("bg-[#A31621]/10", "text-[#A31621]");
-            this.classList.add("bg-[#A31621]", "text-white");
+            this.classList.remove("bg-[#f59c00]/10", "text-[#f59c00]");
+            this.classList.add("bg-[#f59c00]", "text-white");
 
             // Make AJAX request
             fetch(url, {

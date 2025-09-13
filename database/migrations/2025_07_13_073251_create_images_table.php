@@ -23,8 +23,8 @@ return new class extends Migration {
             $table->string('short_description_ar')->nullable();
             $table->string('short_description_en')->nullable();
             // caption ar and en
-            $table->string('caption_ar')->nullable();
-            $table->string('caption_en')->nullable();
+            $table->text('caption_ar')->nullable();
+            $table->text('caption_en')->nullable();
             // type of the image (e.g., blog, service, etc.)
             $table->enum('type_ar', ['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول'])
                 ->default('أعمال');

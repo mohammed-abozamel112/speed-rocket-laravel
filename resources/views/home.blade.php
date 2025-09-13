@@ -13,9 +13,10 @@
 
         <div class="relative z-10 container mx-auto px-4 pt-32 pb-16">
             <div class="max-w-6xl mx-auto">
+                {{-- reverse in mobile view --}}
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
                     {{-- Left Column - Content --}}
-                    <div class="space-y-8 animate-fade-in-up">
+                    <div class="space-y-8 animate-fade-in-up order-2 sm:order-1">
                         {{-- Badge --}}
                         <div
                             class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium">
@@ -61,13 +62,13 @@
                         {{-- CTA Buttons --}}
                         <div class="flex flex-col sm:flex-row gap-4">
                             <a href="#portfolio"
-                                class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
+                                class="bg-[#f59c00] hover:bg-[#002a4d] text-white text-center px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
                                 {{ $isRtl ? 'عرض أعمالنا' : 'View Our Work' }}
                                 <span class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform">&#8594;</span>
                             </a>
                             <a href="#about"
-                                class="border-[#f59c00] text-[#f59c00] hover:bg-[#f59c00] hover:text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg group">
-                                <span class="mr-2 h-5 w-5">&#9654;</span>
+                                class="border-[#f59c00] text-[#f59c00] hover:bg-[#f59c00] text-center hover:text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg group">
+                                <span class="mr-2 h-5 w-5 overflow-hidden">&#9654;</span>
                                 {{ $isRtl ? 'تعلم المزيد' : 'Learn More' }}
                             </a>
                         </div>
@@ -85,7 +86,7 @@
                     </div>
 
                     {{-- Right Column - Visual Element --}}
-                    <div class="relative">
+                    <div class="relative order-1 sm:order-2">
                         {{-- Main Card --}}
                         <div
                             class="relative bg-white  rounded-3xl shadow-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
@@ -120,7 +121,8 @@
                                         <div class="bg-[#002a4d] w-6 h-14 rounded-sm"></div>
                                         <div class="bg-[#c3c7c9] w-6 h-8 rounded-sm"></div>
                                     </div> --}}
-                                    <img loading="lazy" class="w-full max-h-48 object-cover"
+                                    <img loading="lazy"
+                                        class="w-full max-h-48 object-cover"onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'"
                                         src="{{ asset('storage/' . $img->image) }}" alt="">
                                 </div>
                             </div>
@@ -142,7 +144,7 @@
         </div>
 
         {{-- Scroll Indicator --}}
-        <a href="#about" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
+        <a href="#about" class="absolute bottom-0 left-1/2 transform -translate-x-1/2 animate-bounce z-30">
             <div class="w-6 h-10 border-2 border-[#f59c00] rounded-full flex justify-center">
                 <div class="w-1 h-3 bg-[#f59c00] rounded-full mt-2 animate-pulse"></div>
             </div>
@@ -150,15 +152,15 @@
     </section>
 
     {{-- Dynamic About Us Section --}}
-    <section id="about" class="min-h-screen h-auto bg-gradient-to-br from-[#FCF7F8] via-white to-red-50">
+    <section id="about" class="min-h-screen h-auto">
         <div
-            class="content-about ps-[120px] text-[#c7c7c7c9] select-none max-[1200px]:ps-20 max-[1050px]:ps-16 max-[950px]:text-center max-[950px]:px-[90px] max-[650px]:px-[50px]">
+            class="content-about ps-[120px] text-[#c7c7c7c9] select-none max-[1200px]:ps-20 max-[1050px]:ps-16 max-[950px]:text-center max-[950px]:px-[90px] max-[650px]:px-[50px] order-2 sm:order-1">
             <h1
                 class="font-['Dancing Script',cursive] text-[clamp(2.5rem,4vw,6rem)] font-bold bg-gradient-to-r from-[#f59c00] to-[#f59c00] bg-clip-text text-transparent  mb-9 ps-2 max-[650px]:ps-0">
                 {{ app()->getLocale() === 'en' ? 'About Us' : 'من نحن' }}
             </h1>
             <p class="text-[clamp(0.9rem,4vw,1.2rem)] pe-[100px] max-[1200px]:pe-10 max-[990px]:pe-0 pb-8">
-                {{ app()->getLocale() === 'en' ? 'Welcome to our digital agency where every project is a journey into the exquisite world of creative solutions. We are dedicated to bringing you the most innovative and beautifully designed digital experiences that will delight your senses and elevate your brand.' : 'مرحبًا بكم في وكالتنا الرقمية حيث كل مشروع هو رحلة إلى عالم الحلول الإبداعية الرائعة. نحن ملتزمون بتقديم أكثر التجارب الرقمية ابتكارًا وتصميمًا جماليًا التي ستسعد حواسكم وتعزز علامتكم التجارية.' }}
+                {{ app()->getLocale() === 'en' ? 'At Speed Rocket, we believe in efficiency and strive to provide fully integrated import services from China with the highest quality and best prices. Thanks to our extensive experience and strong relationships, we ensure fast and accurate management of all logistics and customs procedures—from the factory to your warehouse.' : 'في سبيد روكيت، نؤمن بالكفاءة ونسعى لتوفير خدمات استيراد متكاملة من الصين بأعلى جودة وأفضل سعر. بفضل خبرتنا الواسعة وعلاقاتنا القوية، نضمن لك إدارة سريعة ودقيقة لجميع الإجراءات اللوجستية والجمركية، من المصنع إلى مستودعك.' }}
             </p>
             <a href="{{ route('about', app()->getLocale()) }}"
                 class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
@@ -166,7 +168,7 @@
             </a>
         </div>
         {{-- Dynamic About Images --}}
-        <div class="stack">
+        <div class="stack order-1 sm:order-2 mt-12 sm:mt-0 ">
             @foreach ($aboutImages as $index => $image)
                 <div class="pictures">
                     <img loading="lazy" src="{{ asset('storage/' . $image->image) }}"
@@ -431,7 +433,8 @@
                 </div>
 
                 {{-- CTA Section --}}
-                <div class="text-center bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-3xl p-8 md:p-12 text-white">
+                <div
+                    class="text-center bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-3xl p-8 md:p-12 text-white">
                     <h3 class="text-3xl md:text-4xl font-bold mb-4">
                         {{ app()->getLocale() === 'en' ? 'Ready to Start Your Success Story?' : 'هل أنت مستعد لبدء قصة نجاحك؟' }}
                     </h3>
