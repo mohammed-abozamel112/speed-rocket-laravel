@@ -41,18 +41,24 @@ class ClientController extends Controller
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
         $client = Client::create($request->validated());
+        /*   if ($request->hasFile('image')) {
+              $path = $request->file('image')->store('clients', 'public');
+              $client->image = $path;
+              $client->save();
+          } */
+        // Optionally handle file upload if needed
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('clients', 'public');
-            $client->image = $path;
-            $client->save();
+            $client->update(['image' => $path]);
         }
+
         return redirect()->route('clients.index', ['lang' => app()->getLocale()])->with('success', 'Client created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($lang,Client $client)
+    public function show($lang, Client $client)
     {
         return view('clients.show', compact('client'));
     }
@@ -60,7 +66,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($lang,Client $client)
+    public function edit($lang, Client $client)
     {
         // add auth check
         if (!Auth::check()) {
@@ -80,10 +86,10 @@ class ClientController extends Controller
         }
         $client->update($request->validated());
 
+       // Optionally handle file upload if needed
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('clients', 'public');
-            $client->image = $path;
-            $client->save();
+            $client->update(['image' => $path]);
         }
 
         return redirect()->route('clients.index', ['lang' => app()->getLocale()])->with('success', 'Client updated successfully.');
@@ -92,7 +98,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($lang,Client $client)
+    public function destroy($lang, Client $client)
     {
         // add auth check
         if (!Auth::check()) {

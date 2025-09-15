@@ -26,7 +26,7 @@ class StoreClientRequest extends FormRequest
             'name_en' => 'nullable|string|max:255',
             'description_ar' => 'nullable|string|max:1000',
             'description_en' => 'nullable|string|max:1000',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|file|max:2048',
             'status' => 'boolean',
             'category_ar' => 'nullable|string|max:255',
             'category_en' => 'nullable|string|max:255',
