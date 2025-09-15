@@ -66,9 +66,9 @@
                         </div>
 
                         <div
-                            class="absolute {{ $isRtl ? 'bottom-0 right-0' : 'bottom-0 left-0' }} inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            class="absolute max-w-[90%] sm:max-w-[70%] text-justify {{ $isRtl ? 'bottom-0 right-0' : 'bottom-0 left-0' }} inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <h2 class="text-[#f59c00] text-6xl font-bold leading-normal">{{ $slider->name }}</h2>
-                            <p class="text-white">{{ $slider->caption }}</p>
+                            <p class="text-white ">{{ $slider->caption }}</p>
                         </div>
                     </div>
                 @endforeach
