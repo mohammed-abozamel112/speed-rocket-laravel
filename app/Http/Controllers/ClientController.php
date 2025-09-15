@@ -52,7 +52,7 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function show($lang,Client $client)
     {
         return view('clients.show', compact('client'));
     }
@@ -60,7 +60,7 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Client $client)
+    public function edit($lang,Client $client)
     {
         // add auth check
         if (!Auth::check()) {
@@ -92,7 +92,7 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy($lang,Client $client)
     {
         // add auth check
         if (!Auth::check()) {

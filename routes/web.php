@@ -104,7 +104,6 @@ Route::prefix('{lang}')->middleware(SetLocale::class)->group(function () {
     });
 
 
-
     // reviews routes
     Route::prefix('reviews')->as('reviews.')->group(function () {
         Route::get('/', [ReviewController::class, 'index'])->name('index');

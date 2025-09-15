@@ -18,10 +18,7 @@ class Client extends Model
         'status',
         'category_ar',
         'category_en',
-        // all foreign keys
-        'service_id',
-        'blog_id',
-        'tag_id',
+    
     ];
     public function getNameAttribute()
     {

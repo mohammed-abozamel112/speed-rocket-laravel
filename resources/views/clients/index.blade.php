@@ -11,6 +11,7 @@
                 <h1 class="text-3xl font-bold text-gray-800 {{ $textAlign }}">
                     {{ $isRtl ? 'العملاء' : 'Clients' }}
                 </h1>
+
                 <a href="{{ route('clients.create', ['lang' => app()->getLocale()]) }}"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     {{ $isRtl ? 'إضافة عميل جديد' : 'Add New Client' }}
@@ -54,7 +55,10 @@
                             <tr>
                                 <td
                                     class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 {{ $textAlign }}">
-                                    {{ $client->name_ar }}
+                                    <a href="{{ route('clients.show', ['lang' => app()->getLocale(), 'client' => $client]) }}"
+                                        class="text-blue-600 hover:text-blue-900">
+                                        {{ $client->name_ar }}
+                                    </a>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 {{ $textAlign }}">
                                     {{ $client->name_en }}
@@ -69,12 +73,13 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium {{ $textAlign }}">
-                                    <a href="{{ route('clients.edit', ['lang' => app()->getLocale(), 'client' => $client]) }}"
+                                    {{-- route('clients.edit', ['client' => $client, 'lang' => app()->getLocale()]) --}}
+                                    <a href="{{ route('clients.edit', ['client' => $client, 'lang' => app()->getLocale()]) }}"
                                         class="text-yellow-600 hover:text-yellow-900 mr-3">
                                         {{ $isRtl ? 'تعديل' : 'Edit' }}
                                     </a>
                                     <form
-                                        action="{{ route('clients.destroy', ['lang' => app()->getLocale(), 'client' => $client]) }}"
+                                        action="{{ route('clients.destroy', ['client' => $client, 'lang' => app()->getLocale()]) }}"
                                         method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
