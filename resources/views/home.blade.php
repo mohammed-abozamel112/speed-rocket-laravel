@@ -19,8 +19,8 @@
                     <div class="space-y-8 animate-fade-in-up order-2 sm:order-1">
                         {{-- Badge --}}
                         <div
-                            class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium">
-                            <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium">
+                            <span class="w-2 h-2 bg-[#f59c00] rounded-full animate-pulse"></span>
 
                             {{ $img->name }}
                         </div>
@@ -192,8 +192,8 @@
         {{-- Section Header --}}
         <div class="text-center mb-16">
             <div
-                class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
-                <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
+                class="inline-flex items-center px-4 py-2 gap-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
+                <span class="w-2 h-2 bg-[#f59c00] rounded-full animate-pulse"></span>
                 {{ app()->getLocale() === 'en' ? 'Our Services' : 'خدماتنا' }}
             </div>
             <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
@@ -275,8 +275,8 @@
                 {{-- Section Header --}}
                 <div class="text-center mb-16">
                     <div
-                        class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
-                        <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
+                        class="inline-flex items-center px-4 py-2 rounded-full gap-2 bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-[#f59c00] rounded-full animate-pulse"></span>
                         {{ app()->getLocale() === 'en' ? 'Our Portfolio' : 'أعمالنا' }}
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
@@ -468,8 +468,8 @@
                 {{-- Section Header --}}
                 <div class="text-center mb-16">
                     <div
-                        class="inline-flex items-center px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
-                        <span class="w-2 h-2 bg-[#f59c00] rounded-full mr-2 animate-pulse"></span>
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#f59c00]/10 text-[#f59c00] text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-[#f59c00] rounded-full animate-pulse"></span>
                         {{ app()->getLocale() === 'en' ? 'Our Partners' : 'شركاؤنا' }}
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
@@ -488,7 +488,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
                     @foreach ($clientImages as $partner)
                         <div class="flex items-center justify-center">
-                            <img loading="lazy" src="{{ $partner->image }}"
+                            <img loading="lazy" src="{{ asset('storage/'.$partner->image) }}"
                                 onerror="this.onerror=null; this.src='{{ asset('storage/logo.png') }}'"
                                 alt="{{ $partner->name }}" class="h-auto min-h-[16rem]">
                         </div>
@@ -614,7 +614,7 @@
                             </div>
                         @else
                             <span
-                                class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full inline-block whitespace-nowrap absolute z-50 top-2">
+                                class="bg-[#f59c00] text-white hover:bg-[#f59b007c] text-xs px-2 py-1 rounded-full inline-block whitespace-nowrap absolute z-50 top-2">
                                 {{ app()->getLocale() === 'en' ? 'general' : 'عام' }}
                             </span>
                         @endif

@@ -326,43 +326,60 @@
                 </div>
             </div>
         </section>
-
-        <!-- Final CTA Section -->
-        <section class="py-20 px-4 sm:px-6 lg:px-8 {{ $textAlignCenter }}" style="background-color: #002a4d;">
-            <div class="max-w-4xl mx-auto text-white">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    {{ $isRtl ? 'مستعد للبدء؟' : 'Ready to Get Started?' }}
+        {{-- map address link from google maps --}}
+        <section id="offices" class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 {{ $textAlignCenter }}" style="color: #f59c00;">
+                    {{ $isRtl ? 'مكاتبنا' : 'Our Offices' }}
                 </h2>
-                <p class="text-xl mb-8 opacity-90">
-                    {{ $isRtl
-                        ? 'دعنا نحوّل أفكارك إلى واقع. تواصل معنا اليوم للحصول على استشارة مجانية.'
-                        : 'Let\'s transform your ideas into reality. Contact us today for a free consultation.' }}
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button
-                        class="px-8 py-6 text-lg font-semibold bg-white hover:bg-gray-100 transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center"
-                        style="color: #f59c00;"
-                        onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="h-5 w-5 {{ $marginRight }}">
-                            <path d="m22 2-7 20-4-9-9-4Z" />
-                            <path d="M22 2 11 13" />
-                        </svg>
-                        {{ $isRtl ? 'ابدأ الآن' : 'Get Started Now' }}
-                    </button>
-                    <button
-                        class="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-[#f59c00] transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" class="h-5 w-5 {{ $marginRight }}">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                        </svg>
-                        {{ $isRtl ? 'جد مكالمة' : 'Schedule a Call' }}
-                    </button>
+                <div class="w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3788.346392666532!2d42.73955192418302!3d18.285760576303467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15fb590042e61985%3A0x44221e7a409c777!2z2LTYsdmD2Kkg2YHZitivINmE2YTYqtiz2YjZitmCINmI2KfZhNio2LHZhdis2YrYp9iq!5e0!3m2!1sar!2ssa!4v1757784073389!5m2!1sar!2ssa"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="true" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                 </div>
+
+
+                <!-- Final CTA Section -->
+                <section class="py-20 px-4 sm:px-6 lg:px-8 {{ $textAlignCenter }}"
+                    style="background-color: #002a4d;">
+                    <div class="max-w-4xl mx-auto text-white">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            {{ $isRtl ? 'مستعد للبدء؟' : 'Ready to Get Started?' }}
+                        </h2>
+                        <p class="text-xl mb-8 opacity-90">
+                            {{ $isRtl
+                                ? 'دعنا نحوّل أفكارك إلى واقع. تواصل معنا اليوم للحصول على استشارة مجانية.'
+                                : 'Let\'s transform your ideas into reality. Contact us today for a free consultation.' }}
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button
+                                class="px-8 py-6 text-lg font-semibold bg-white hover:bg-gray-100 transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center"
+                                style="color: #f59c00;"
+                                onclick="document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="h-5 w-5 {{ $marginRight }}">
+                                    <path d="m22 2-7 20-4-9-9-4Z" />
+                                    <path d="M22 2 11 13" />
+                                </svg>
+                                {{ $isRtl ? 'ابدأ الآن' : 'Get Started Now' }}
+                            </button>
+                            <button
+                                class="px-8 py-6 text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-[#f59c00] transition-all duration-300 hover:scale-105 rounded-md flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="h-5 w-5 {{ $marginRight }}">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                                {{ $isRtl ? 'جد مكالمة' : 'Schedule a Call' }}
+                            </button>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
-    </div>
 </x-master-layout>

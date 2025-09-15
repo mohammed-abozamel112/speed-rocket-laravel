@@ -12,7 +12,7 @@
 
         <div class="mb-4">
             <a href="{{ route('blogs.create', ['lang' => app()->getLocale()]) }}"
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                class="bg-[#f59c00] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Create New Blog
             </a>
         </div>
@@ -71,7 +71,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                    {{ app()->getLocale() === 'en' ? 'Latest Blogs' : 'أحدث المدونات' }}
+                    {{ app()->getLocale() === 'en' ? 'Our Blogs' : 'مدوناتنا' }}
                 </h2>
                 <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-300">
                     {{ app()->getLocale() === 'en' ? 'Check out our latest blog posts and updates.' : 'اطلع على أحدث منشورات المدونة والتحديثات.' }}
@@ -92,7 +92,7 @@
                             </div>
                         @else
                             <span
-                                class="bg-blue-500 text-white text-xs px-2 py-1 rounded-full inline-block whitespace-nowrap absolute z-50 top-2">
+                                class="bg-[#f59c00] text-white text-xs px-2 py-1 rounded-full inline-block whitespace-nowrap absolute z-50 top-2">
                                 {{ app()->getLocale() === 'en' ? 'general' : 'عام' }}
                             </span>
                         @endif
