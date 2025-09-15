@@ -8,7 +8,7 @@
     {{-- icon Links? --}}
     <link rel="icon" type="image/png" href="{{ asset('storage/logo.png') }}" />
 
-    <title>{{ app()->getLocale() === 'en' ? 'Fid Marketing Company' : 'شركة فيد للتسويق' }}</title>
+    <title>{{ app()->getLocale() === 'en' ? 'Speed Rocket Company' : 'شركة سبيد روكت' }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
