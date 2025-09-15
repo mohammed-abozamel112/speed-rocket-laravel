@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
 use App\Models\Image;
+use Illuminate\Container\Attributes\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class TagController extends Controller
@@ -18,7 +19,7 @@ class TagController extends Controller
         $tags = Tag::latest()->paginate(10);
         $tagsImages = Image::whereNotNull('tag_id')->take(5)->get();
         //get all tags in filter according to id
-      
+
         return view('tags.index', compact('tags', 'lang', 'tagsImages'));
     }
 
@@ -85,6 +86,12 @@ class TagController extends Controller
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
         $tag->update($request->validated());
+        // Optionally handle file upload if needed
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('tags', 'public');
+            $tag->update(['image' => $path]);
+        }
+
         return redirect()->route('tags.index', ['lang' => $lang])->with('success', 'Tag updated successfully.');
     }
 
@@ -97,6 +104,7 @@ class TagController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
+      
         $tag->delete();
         return redirect()->route('tags.index', ['lang' => $lang])->with('success', 'Tag deleted successfully.');
     }
