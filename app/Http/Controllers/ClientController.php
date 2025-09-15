@@ -72,7 +72,7 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update($lang, UpdateClientRequest $request, Client $client)
     {
         // add auth check
         if (!Auth::check()) {
