@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class BlogController extends Controller
@@ -80,13 +81,18 @@ class BlogController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
-        return view('blogs.edit', compact('blog'));
+         $users= User::get([
+            'id',
+            'name_ar',
+            'name_en',
+        ]);
+        return view('blogs.edit', compact('blog','users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBlogRequest $request, Blog $blog)
+    public function update(UpdateBlogRequest $request,$lang, Blog $blog)
     {
         // add auth check
         if (!Auth::check()) {

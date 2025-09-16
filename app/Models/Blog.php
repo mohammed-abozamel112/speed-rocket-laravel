@@ -31,6 +31,7 @@ class Blog extends Model
         'description3_en',
         'image',
         'status',
+        'user_id',
     ];
 
     // Dynamic accessor for description attribute based on locale
