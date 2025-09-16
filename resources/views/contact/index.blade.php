@@ -9,20 +9,25 @@
         $borderLeft = $isRtl ? 'border-r-4' : 'border-l-4';
         $marginLeft = $isRtl ? 'mr-2' : 'ml-2';
         $marginRight = $isRtl ? 'ml-2' : 'mr-2';
+        // image with type contact
+        $contactImage = \App\Models\Image::where('type_en', 'contact')->first();
     @endphp
 
-    <div class="min-h-screen {{ $dir }}" style="background-color: #fcf7f9;">
+    <div class="min-h-screen w-full {{ $dir }}" style="background-color: #fcf7f9;">
         <!-- Hero Section -->
-        <section class="relative py-20 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto {{ $textAlignCenter }}">
+
+        <section class="relative py-20 flex place-items-center px-4 sm:px-6 lg:px-8 min-h-[70vh]"
+            style="background:url({{ asset('storage/' . $contactImage->image) }}) center/cover; background-attachment: fixed;">
+            <div class="max-w-full mx-auto {{ $textAlignCenter }}">
                 <div class="mb-8">
                     <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-                        <span style="color: #f59c00;">{{ $isRtl ? 'تواصل معنا' : 'Get in Touch' }}</span>
+                        <span style="color: #f59c00;">{{ $contactImage->name }}</span>
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        {{ $isRtl
-                            ? 'مستعد لتحويل عملك؟ نحن نحب أن نسمع منك. دعنا نناقش كيف يمكننا مساعدتك في تحقيق رؤيتك.'
-                            : 'Ready to transform your business? We\'d love to hear from you. Let\'s discuss how we can help bring your vision to life.' }}
+                        {{ $contactImage->short_description }} {{$isRtl ? '؟' : '?'}}
+                    </p>
+                    <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        {{ $contactImage->caption }}
                     </p>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">

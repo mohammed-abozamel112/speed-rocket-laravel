@@ -117,6 +117,7 @@
                     <option value="works" {{ old('type_en') == 'works' ? 'selected' : '' }}>Works</option>
                     <option value="home" {{ old('type_en') == 'home' ? 'selected' : '' }}>Home</option>
                     <option value="about" {{ old('type_en') == 'about' ? 'selected' : '' }}>About</option>
+                    <option value="contact" {{ old('type_en') == 'contact' ? 'selected' : '' }}>Contact</option>
                 </select>
                 @error('type_en')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -136,6 +137,7 @@
                     <option value="أعمال" {{ old('type_ar') == 'أعمال' ? 'selected' : '' }}>أعمال</option>
                     <option value="الرئيسية" {{ old('type_ar') == 'الرئيسية' ? 'selected' : '' }}>الرئيسية</option>
                     <option value="حول" {{ old('type_ar') == 'حول' ? 'selected' : '' }}>حول</option>
+                    <option value="تواصل" {{ old('type_ar') == 'تواصل' ? 'selected' : '' }}>تواصل</option>
                 </select>
                 @error('type_ar')
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
@@ -229,6 +231,7 @@
                 'أعمال': 'works',
                 'الرئيسية': 'home',
                 'حول': 'about',
+                'تواصل': 'contact',
                 //en to ar
                 'blog': 'مدونه',
                 'service': 'خدمة',
@@ -238,6 +241,7 @@
                 'works': 'أعمال',
                 'home': 'الرئيسية',
                 'about': 'حول',
+                'contact': 'تواصل',
             };
 
             typeArSelect.addEventListener('change', function() {

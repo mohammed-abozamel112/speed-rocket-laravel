@@ -26,11 +26,12 @@
                         </div>
 
                         {{-- Main Heading --}}
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                        <h1 class="text-4xl text-[#f59c00] md:text-5xl lg:text-6xl font-bold leading-normal">
+                            {{-- name --}}
                             <span class="text-gray-900 block">{{ $img->name }}</span>
 
                             <span
-                                class="bg-gradient-to-r from-[#f59c00] to-[#002a4d] bg-clip-text text-transparent block leading-normal">
+                                class=" pt-2 bg-gradient-to-r from-[#f59c00] text-3xl sm:text-4xl to-[#002a4d] bg-clip-text text-transparent block leading-normal">
                                 {{ $img->short_description }}
                             </span>
                         </h1>

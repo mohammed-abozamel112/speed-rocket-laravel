@@ -30,15 +30,20 @@ class StoreImageRequest extends FormRequest
             'alt_text_en' => 'nullable|string|max:255',
             'short_description_ar' => 'nullable|string|max:255',
             'short_description_en' => 'nullable|string|max:255',
-            'caption_ar' => 'nullable|text',
-            'caption_en' => 'nullable|text',
+            /*
+              // caption ar and en
+            $table->text('caption_ar')->nullable();
+            $table->text('caption_en')->nullable();
+            */
+            'caption_ar' => 'nullable|string',
+            'caption_en' => 'nullable|string',
             'type_ar' => [
                 'required',
-                Rule::in(['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول']),
+                Rule::in(['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول','تواصل']),
             ],
             'type_en' => [
                 'required',
-                Rule::in(['blog', 'service', 'gallery', 'profile', 'client', 'works', 'home', 'about']),
+                Rule::in(['blog', 'service', 'gallery', 'profile', 'client', 'works', 'home', 'about','contact']),
             ],
             'service_id' => 'nullable|exists:services,id',
             'blog_id' => 'nullable|exists:blogs,id',
