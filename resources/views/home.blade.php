@@ -628,9 +628,9 @@
                                     alt="{{ $post->title }}" class="w-full h-full object-cover hover:blur-sm" />
                             @endif
                             <div class="p-6 absolute bottom-0">
-                                <h3 class="text-2xl font-bold mb-2">{{ Str::limit($post->title, 100) }}</h3>
+                                <h3 class="text-2xl font-bold mb-2">{{ Str::limit($post->title, 50) }}</h3>
                                 <p class="text-gray-300 mb-4">
-                                    {{ Str::limit($post->short_description, 100) }}</p>
+                                    {{ Str::limit($post->short_description, ) }}</p>
                                 <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}"
                                     class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
                             </div>
