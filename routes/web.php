@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ConsultantController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
@@ -125,5 +126,8 @@ Route::prefix('{lang}')->middleware(SetLocale::class)->group(function () {
         Route::put('/{image}', [ImageController::class, 'update'])->name('update');
         Route::delete('/{image}', [ImageController::class, 'destroy'])->name('destroy');
     });
+
+    // consultant route
+    Route::get('/consultant', [ConsultantController::class, 'index'])->name('consultant');
 
 });

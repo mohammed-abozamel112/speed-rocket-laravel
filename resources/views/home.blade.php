@@ -26,12 +26,12 @@
                         </div>
 
                         {{-- Main Heading --}}
-                        <h1 class="text-4xl text-[#f59c00] md:text-5xl lg:text-6xl font-bold leading-normal">
+                        <h1 class="text-4xl p-0 m-0 text-[#f59c00] md:text-5xl lg:text-6xl font-bold">
                             {{-- name --}}
-                            <span class="text-gray-900 block">{{ $img->name }}</span>
+                            <span class="text-gray-900 block leading-normal">{{ $img->name }}</span>
 
                             <span
-                                class=" pt-2 bg-gradient-to-r from-[#f59c00] text-3xl sm:text-4xl to-[#002a4d] bg-clip-text text-transparent block leading-normal">
+                                class="py-2 leading-normal bg-gradient-to-r from-[#f59c00] text-3xl sm:text-4xl to-[#002a4d] bg-clip-text text-transparent block">
                                 {{ $img->short_description }}
                             </span>
                         </h1>
@@ -197,16 +197,16 @@
                 <span class="w-2 h-2 bg-[#f59c00] rounded-full animate-pulse"></span>
                 {{ app()->getLocale() === 'en' ? 'Our Services' : 'خدماتنا' }}
             </div>
-            <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
-                {{ app()->getLocale() === 'en' ? 'Innovative Solutions' : 'حلول مبتكرة' }}
-                <span class="text-gradient">
-                    {{ app()->getLocale() === 'en' ? 'in the Industry' : 'في الصناعة' }}
+            <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6 capitalize">
+                {{ app()->getLocale() === 'en' ? 'From Our Land…' : 'من أرضنا...' }}
+                <span class="text-gradient block">
+                    {{ app()->getLocale() === 'en' ? 'To Tables Around the World' : 'إلى موائد العالم' }}
                 </span>
             </h2>
             <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 {{ app()->getLocale() === 'en'
-                    ? 'Explore our diverse range of services designed to elevate your brand and drive success. From web development to digital marketing, we have the expertise to help you thrive.'
-                    : 'استكشف مجموعة خدماتنا المتنوعة المصممة لرفع مستوى علامتك التجارية ودفع النجاح. من تطوير الويب إلى التسويق الرقمي، لدينا الخبرة لمساعدتك على الازدهار.' }}
+                    ? 'We believe every product has a story worth sharing.We import a diverse range of products from our trusted partners worldwide, leveraging professional expertise to ensure quality and strict compliance with standards. Our goal is to provide the best options for our clients from reliable sources with top-notch service.'
+                    : 'نحن نؤمن أن لكل منتج قصة تستحق أن تُروى .نستورد مجموعة واسعة من المنتجات من شركائنا حول العالم، مع خبرة احترافية في ضمان الجودة والالتزام بأدق المعايير. نسعى لتوفير أفضل الخيارات لعملائنا من مصادر موثوقة وبأعلى مستويات الخدمة.' }}
             </p>
         </div>
         {{-- End Section Header --}}
@@ -281,14 +281,14 @@
                         {{ app()->getLocale() === 'en' ? 'Our Portfolio' : 'أعمالنا' }}
                     </div>
                     <h2 class="text-4xl md:text-5xl font-bold text-[#f59c00] mb-6">
-                        {{ app()->getLocale() === 'en' ? 'Success Stories & ' : 'قصص النجاح و' }}
+                        {{ app()->getLocale() === 'en' ? 'Catalogs of' : 'كتالوجات الشركات ' }}
                         <span
-                            class="text-gradient">{{ app()->getLocale() === 'en' ? 'Project Showcase' : 'عرض المشاريع' }}</span>
+                            class="text-gradient">{{ app()->getLocale() === 'en' ? 'Our Partnered Companies' : 'التي نتعامل معها' }}</span>
                     </h2>
                     <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                         {{ app()->getLocale() === 'en'
-                            ? "Explore our diverse portfolio of successful projects across industries. From startups to enterprise solutions, see how we've helped clients achieve their goals."
-                            : 'استكشف مجموعة متنوعة من مشاريعنا الناجحة في مختلف الصناعات. من الشركات الناشئة إلى الحلول المؤسسية، شاهد كيف ساعدنا عملاءنا على تحقيق أهدافهم.' }}
+                            ? 'Browse the official catalogs of the companies and manufacturers we work with. Each catalog showcases trusted products backed by quality and years of industry expertise helping you make informed sourcing decisions.'
+                            : 'نوفر لك مجموعة من الكتالوجات الرسمية للشركات والمصانع التي نتعامل معها، لتستعرض المنتجات المتاحة بكل سهولة. كل كتالوج يمثل جودة نثق بها، وخبرة ممتدة في مجالات متنوعة.' }}
                     </p>
                 </div>
                 {{-- create filter using project category --}}
@@ -444,7 +444,7 @@
                             ? "Join our portfolio of successful projects. Let's create something amazing together that drives real business results."
                             : 'انضم إلى مجموعة مشاريعنا الناجحة. دعنا نبتكر شيئًا مذهلاً معًا يحقق نتائج حقيقية.' }}
                     </p>
-                    <a href="#contact"
+                    <a href="{{ route('contact.index', app()->getLocale()) }}"
                         class="bg-white text-[#f59c00] hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group inline-flex items-center justify-center">
                         {{ app()->getLocale() === 'en' ? 'Start Your Project' : 'ابدأ مشروعك' }}
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -489,7 +489,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
                     @foreach ($clientImages as $partner)
                         <div class="flex items-center justify-center">
-                            <img loading="lazy" src="{{ asset('storage/'.$partner->image) }}"
+                            <img loading="lazy" src="{{ asset('storage/' . $partner->image) }}"
                                 onerror="this.onerror=null; this.src='{{ asset('storage/logo.png') }}'"
                                 alt="{{ $partner->name }}" class="h-auto min-h-[16rem]">
                         </div>
