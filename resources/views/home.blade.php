@@ -599,6 +599,26 @@
                 <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-300">
                     {{ app()->getLocale() === 'en' ? 'Check out our latest blog posts and updates.' : 'اطلع على أحدث منشورات المدونة والتحديثات.' }}
                 </p>
+                 {{-- create a to all blogs --}}
+                <div class="m-6">
+                    <a href="{{ route('blogs.index', app()->getLocale()) }}"
+                        class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group inline-flex  justify-center place-content-center place-items-center gap-2">
+                        {{ app()->getLocale() === 'en' ? 'View All Blogs' : 'عرض جميع المدونات' }}
+                       @if ($isRtl)
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                        </svg>
+                       @else
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+
+                       @endif
+                    </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($latestPosts as $post)
