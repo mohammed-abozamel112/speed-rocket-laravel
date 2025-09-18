@@ -59,9 +59,10 @@ class TagController extends Controller
     public function show($lang, Tag $tag)
     {
         // images with tag_id relation
-        $imagesTag = Image::where('tag_id', $tag->id)->get();
+        $imagesTag = Image::where('tag_id', $tag->id)->take(4)->get();
+        $imagesTags = Image::where('tag_id', $tag->id)->get();
 
-        return view('tags.show', compact('tag', 'imagesTag'));
+        return view('tags.show', compact('tag', 'imagesTag', 'imagesTags'));
     }
 
     /**
@@ -104,7 +105,7 @@ class TagController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
-      
+
         $tag->delete();
         return redirect()->route('tags.index', ['lang' => $lang])->with('success', 'Tag deleted successfully.');
     }

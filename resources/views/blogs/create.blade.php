@@ -16,7 +16,8 @@
             </div>
         @endif
 
-        <form action="{{ route('blogs.store', ['lang' => app()->getLocale()]) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('blogs.store', ['lang' => app()->getLocale()]) }}" method="POST"
+            enctype="multipart/form-data" class="space-y-6">
             @csrf
 
             <div>
@@ -140,11 +141,27 @@
                 <select name="user_id" id="user_id"
                     class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     <option value="" {{ old('user_id') ? '' : 'selected' }}>Select Author</option>
-                    @foreach (App\Models\User::orderBy('name')->pluck('name', 'id') as $id => $name)
-                        <option value="{{ $id }}" {{ old('user_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>
+                            {{ $user->name }}</option>
                     @endforeach
                 </select>
             </div>
+            {{--  <div class="mb-4">
+                <label for="user_id" class="block text-gray-700 font-bold mb-2">Author</label>
+
+                <select name="user_id" id="user_id"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="" {{ old('user_id', 'user_id') ? '' : 'selected' }}>Select Author
+                    </option>
+                    @foreach ($users as $user)
+                        <option value="{{ $user->id }}"
+                            {{ old('user_id', $blog->user_id) == $user->id ? 'selected' : '' }}>
+                            {{ $user->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div> --}}
 
             <div>
                 <label for="status" class="block text-sm font-medium text-gray-700">Status *</label>

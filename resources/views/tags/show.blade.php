@@ -174,14 +174,185 @@
                 @endforeach
             </div>
         </div>
-        {{-- get the current service and its tags service h-screen w-full and content in the right middle
-        --}}
+        {{-- create from $imagesTag with creative view not the same as above  --}}
+        <style>
+            .cardtag {
+                position: relative;
+                overflow: hidden;
+            }
 
-        <div class="flex h-screen w-full">
-            <div class="m-auto">
-                <h1 class="text-2xl font-bold mb-4">{{ $tag->name }}</h1>
-                <p class="text-gray-700">{{ $tag->description }}</p>
-            </div>
-        </div>
+            .cardtag::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                transition: clip-path 0.6s;
+                background-color: #f59c00;
+            }
+
+            .cardtag:hover {
+                box-shadow: 0.063rem 0.063rem 1.25rem 0.375rem rgb(0 0 0 / 53%);
+            }
+
+            /* Base clip-path for all cards, adjusted per child later */
+            .cardtag:nth-child(1)::before {
+                bottom: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
+            }
+
+            .cardtag:nth-child(2)::before {
+                bottom: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
+            }
+
+            .cardtag:nth-child(3)::before {
+                top: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
+            }
+
+            .cardtag:nth-child(4)::before {
+                top: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
+            }
+
+            .cardtag:hover::before {
+                clip-path: circle(110vw at center);
+            }
+
+            .cardtag p {
+                transition: color 0.8s;
+            }
+
+            .cardtag:hover p {
+                color: #fff;
+            }
+
+            .circle {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                transition: clip-path 0.6s;
+                background-repeat: no-repeat;
+                background-position: 50% 50%;
+                background-size: cover;
+            }
+
+            .cardtag:hover .circle {
+                clip-path: circle(0);
+            }
+
+            .cardtag:nth-child(1) .circle {
+
+                bottom: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
+            }
+
+            .cardtag:nth-child(2) .circle {
+
+                bottom: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
+            }
+
+            .cardtag:nth-child(3) .circle {
+
+                top: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
+            }
+
+            .cardtag:nth-child(4) .circle {
+
+                top: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
+            }
+
+            /* RTL overrides */
+            [dir="rtl"] .cardtag:hover::before {
+                clip-path: circle(110vw at center) !important;
+            }
+            [dir="rtl"] .cardtag:nth-child(1)::before {
+                bottom: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(2)::before {
+                bottom: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(3)::before {
+                top: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(4)::before {
+                top: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(1) .circle {
+                bottom: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 100%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(2) .circle {
+                bottom: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 100%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(3) .circle {
+                top: 0;
+                left: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 0% 0%);
+            }
+
+            [dir="rtl"] .cardtag:nth-child(4) .circle {
+                top: 0;
+                right: 0;
+                clip-path: circle(calc(6.25rem + 7.5vw) at 100% 0%);
+            }
+        </style>
+        <section class="min-h-screen bg-gray-900 text-center py-20 px-8 xl:px-0 flex flex-col justify-center">
+            <span class="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center">what we're offering <svg
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="text-[#f59c00] ml-3 w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                </svg>
+            </span>
+            <h1 class="text-white text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug">
+                Services Built Specifically for your Business</h1>
+            @foreach ($imagesTags->chunk(4) as $chunk)
+                <div class="grid-offer grid sm:grid-cols-2 md:grid-cols-2 gap-5 max-w-5xl mx-auto mb-8">
+                    @foreach ($chunk as $image)
+                        <div class="cardtag bg-gray-800 p-10 relative min-h-[18rem]">
+                            <div class="circle overflow-hidden"
+                                style="background-image: url('{{ asset('storage/' . $image->image) }}');">
+
+                            </div>
+                            <div class="relative {{ $isRtl ? 'lg:pl-52' : 'lg:pr-52' }}">
+                                <h2 class="capitalize text-white mb-4 text-2xl xl:text-3xl">{{ $image->name }}</h2>
+                                <p class="text-gray-400">{{ Str::limit($image->caption, 120) }}</p>
+                            </div>
+                            <div class="icon"></div>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
+        </section>
     @endguest
 </x-master-layout>

@@ -32,7 +32,12 @@ class BlogController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
-        return view('blogs.create');
+         $users= User::get([
+            'id',
+            'name_ar',
+            'name_en',
+        ]);
+        return view('blogs.create', compact('users'));
     }
 
     /**
