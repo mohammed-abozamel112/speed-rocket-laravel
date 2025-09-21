@@ -221,7 +221,7 @@
                             </div>
                             <div class="meta">
                                 <a
-                                    href="{{ route('services.show', ['lang' => app()->getLocale(), 'service' => $service->id]) }}">
+                                    href="{{ route('services.show', ['lang' => app()->getLocale(), 'service' => $service->slug]) }}">
                                     <h2 class="text-6xl text-break py-3">{{ $service->name }}</h2>
                                 </a>
                                 <p class="desc text-2xl text-gray-500 text-break p-2 text-justify">
@@ -236,7 +236,7 @@
                                         {{--  @php
                                         dd($tag)
                                     @endphp --}}
-                                        <a href="{{ route('tags.show', ['lang' => app()->getLocale(), 'tag' => $tag->id]) }}"
+                                        <a href="{{ route('tags.show', ['lang' => app()->getLocale(), 'tag' => $tag->slug]) }}"
                                             class="border border-[#f3f3f3] hover:border-[#f59c00] text-[#f59c00]
           bg-gradient-to-br from-[#FCF7F8] via-white to-red-50
           hover:bg-none hover:bg-[#f59c00] hover:text-white
