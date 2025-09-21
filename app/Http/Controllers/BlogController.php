@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateBlogRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 class BlogController extends Controller
 {
     /**
@@ -51,6 +52,10 @@ class BlogController extends Controller
         }
         // Validate and store the blog data
         $validated = $request->validated();
+
+        // Generate slugs for both languages
+        $validated['slug_ar'] = Str::slug($validated['title_ar']);
+        $validated['slug_en'] = Str::slug($validated['title_en']);
 
         // Set user_id if not provided
         if (!isset($validated['user_id']) && Auth::check()) {
@@ -104,6 +109,10 @@ class BlogController extends Controller
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
         $validated = $request->validated();
+
+        // Generate slugs for both languages
+        $validated['slug_ar'] = Str::slug($validated['title_ar']);
+        $validated['slug_en'] = Str::slug($validated['title_en']);
 
         if ($request->hasFile('image')) {
             // Delete old image if exists

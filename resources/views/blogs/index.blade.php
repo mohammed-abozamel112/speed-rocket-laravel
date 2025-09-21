@@ -31,7 +31,7 @@
                     @foreach ($blogs as $blog)
                         <tr>
                             <td class="py-2 px-4 border-b">
-                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $blog->id]) }}"
+                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $blog->slug]) }}"
                                     class="text-blue-600 hover:underline">
                                     {{ $blog->title }}
                                 </a>
@@ -41,10 +41,10 @@
                             </td>
                             <td class="py-2 px-4 border-b">{{ $blog->created_at }}</td>
                             <td class="py-2 px-4 border-b">
-                                <a href="{{ route('blogs.edit', ['lang' => app()->getLocale(), 'blog' => $blog->id]) }}"
+                                <a href="{{ route('blogs.edit', ['lang' => app()->getLocale(), 'blog' => $blog->slug]) }}"
                                     class="text-yellow-500 hover:underline mr-2">Edit</a>
                                 <form
-                                    action="{{ route('blogs.destroy', ['lang' => app()->getLocale(), 'blog' => $blog->id]) }}"
+                                    action="{{ route('blogs.destroy', ['lang' => app()->getLocale(), 'blog' => $blog->slug]) }}"
                                     method="POST" class="inline-block"
                                     onsubmit="return confirm('Are you sure you want to delete this blog?');">
                                     @csrf
@@ -79,6 +79,9 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($blogs as $post)
+               {{--   @php
+                    dd($post->slug);
+                @endphp --}}
                     <div
                         class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer relative min-h-[20rem] ">
                         @if ($post->tags->isNotEmpty())
@@ -97,7 +100,7 @@
                             </span>
                         @endif
                         <a class="w-full h-full"
-                            href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}">
+                            href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}">
                             @if ($post->image)
                                 <img loading="lazy"
                                     src="{{ $post->image ? $post->image : asset('storage/' . $post->image) }}"
@@ -108,7 +111,7 @@
                                 <h3 class="text-2xl font-bold mb-2">{{ $post->title }}</h3>
                                 <p class="text-gray-300 mb-4">
                                     {{ Str::limit($post->short_description, 150) }}</p>
-                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}"
+                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}"
                                     class="bg-[#f59c00] hover:bg-[#002a4d] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
                             </div>
                         </a>

@@ -622,6 +622,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($latestPosts as $post)
+               
                     <div
                         class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer relative min-h-[20rem] ">
                         @if ($post->tags->isNotEmpty())
@@ -640,7 +641,7 @@
                             </span>
                         @endif
                         <a class="w-full h-full"
-                            href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}">
+                            href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}">
                             @if ($post->image)
                                 <img loading="lazy"
                                     src="{{ $post->image ? $post->image : asset('storage/' . $post->image) }}"
@@ -651,7 +652,7 @@
                                 <h3 class="text-2xl font-bold mb-2">{{ Str::limit($post->title, 50) }}</h3>
                                 <p class="text-gray-300 mb-4">
                                     {{ Str::limit($post->short_description, ) }}</p>
-                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->id]) }}"
+                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}"
                                     class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
                             </div>
                         </a>

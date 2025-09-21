@@ -3,7 +3,7 @@
         <div class="max-w-2xl mx-auto">
             <h1 class="text-3xl font-bold text-gray-800 mb-6">Edit Tag</h1>
 
-            <form action="{{ route('tags.update', ['lang' => app()->getLocale(), 'tag' => $tag->id]) }}" method="POST"
+            <form action="{{ route('tags.update', ['lang' => app()->getLocale(), 'tag' => $tag->slug]) }}" method="POST"
                 class="bg-white rounded-lg shadow-md p-6" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

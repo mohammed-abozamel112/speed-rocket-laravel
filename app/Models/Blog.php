@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Blog extends Model
 {
@@ -15,6 +16,8 @@ class Blog extends Model
     protected $fillable = [
         'title_ar',
         'title_en',
+        'slug_ar',
+        'slug_en',
         'short_description_ar',
         'short_description_en',
         'sub_title1_ar',
@@ -33,6 +36,37 @@ class Blog extends Model
         'status',
         'user_id',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->slug_ar = Str::slug($model->title_ar);
+            $model->slug_en = Str::slug($model->title_en);
+        });
+
+        static::updating(function ($model) {
+            $model->slug_ar = Str::slug($model->title_ar);
+            $model->slug_en = Str::slug($model->title_en);
+        });
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        $locale = app()->getLocale();
+        $slugField = $locale === 'ar' ? 'slug_ar' : 'slug_en';
+
+        $model = $this->where($slugField, $value)->first();
+
+        if (!$model) {
+            // fallback to the other locale slug
+            $otherSlugField = $locale === 'ar' ? 'slug_en' : 'slug_ar';
+            $model = $this->where($otherSlugField, $value)->first();
+        }
+
+        return $model;
+    }
 
     // Dynamic accessor for description attribute based on locale
     public function getTitleAttribute()
@@ -95,6 +129,13 @@ class Blog extends Model
         $column = 'description3_' . $locale;
         return $this->{$column} ?? $this->description3_en;
     }
+    //slug attribute
+    public function getSlugAttribute()
+    {
+        $locale = app()->getLocale();
+        $column = 'slug_' . $locale;
+        return $this->{$column} ?? $this->slug_en;
+    }
 
     public function user()
     {
@@ -109,5 +150,11 @@ class Blog extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        $locale = app()->getLocale();
+        return $locale === 'ar' ? 'slug_ar' : 'slug_en';
     }
 }

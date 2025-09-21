@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Service;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -43,7 +44,13 @@ class CategoryController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
-        $category = Category::create($request->validated());
+        $validated = $request->validated();
+
+        // Generate slugs for both languages
+        $validated['slug_ar'] = Str::slug($validated['name_ar']);
+        $validated['slug_en'] = Str::slug($validated['name_en']);
+
+        $category = Category::create($validated);
         //handle image upload
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('categories', 'public');
@@ -83,7 +90,13 @@ class CategoryController extends Controller
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
         }
-        $category->update($request->validated());
+        $validated = $request->validated();
+
+        // Generate slugs for both languages
+        $validated['slug_ar'] = Str::slug($validated['name_ar']);
+        $validated['slug_en'] = Str::slug($validated['name_en']);
+
+        $category->update($validated);
 
         //handle image upload
         if ($request->hasFile('image')) {

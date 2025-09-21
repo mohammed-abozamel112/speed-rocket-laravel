@@ -9,12 +9,6 @@ class Review extends Model
 {
     /** @use HasFactory<\Database\Factories\ReviewFactory> */
     use HasFactory;
-    /*  $table->string('name_ar'); // Added name column
-              $table->string('name_en'); // Added name column
-              $table->text('review_ar'); // Added review column
-              $table->text('review_en'); // Added review column
-              $table->string('image')->nullable(); // Added image column
-              $table->integer('rating')->default(5); // Added rating column with default value */
     protected $fillable = [
         'name_ar',
         'name_en',
