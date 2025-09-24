@@ -140,6 +140,9 @@
                     </option>
                     <option value="about" {{ old('type_en', $image->type_en) == 'about' ? 'selected' : '' }}>About
                     </option>
+                {{-- contact --}}
+                    <option value="contact" {{ old('type_en', $image->type_en) == 'contact' ? 'selected' : '' }}>Contact
+                    </option>
                 </select>
                 @if ($errors->has('type_en'))
                     <p class="text-red-500 text-sm mt-1">{{ $errors->first('type_en') }}</p>
@@ -167,6 +170,9 @@
                     <option value="الرئيسية" {{ old('type_ar', $image->type_ar) == 'الرئيسية' ? 'selected' : '' }}>
                         الرئيسية</option>
                     <option value="حول" {{ old('type_ar', $image->type_ar) == 'حول' ? 'selected' : '' }}>حول
+                    </option>
+                {{-- contact --}}
+                    <option value="تواصل" {{ old('type_ar', $image->type_ar) == 'تواصل' ? 'selected' : '' }}>اتصال
                     </option>
                 </select>
                 @if ($errors->has('type_ar'))
@@ -268,6 +274,7 @@
                 'أعمال': 'works',
                 'الرئيسية': 'home',
                 'حول': 'about',
+                'تواصل': 'contact',
                 //en to ar
                 'blog': 'مدونه',
                 'service': 'خدمة',
@@ -277,6 +284,7 @@
                 'works': 'أعمال',
                 'home': 'الرئيسية',
                 'about': 'حول',
+                'contact': 'تواصل',
             };
 
             typeArSelect.addEventListener('change', function() {
