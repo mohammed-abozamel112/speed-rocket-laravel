@@ -1,6 +1,9 @@
 <x-master-layout>
     @php
         $isRtl = app()->getLocale() === 'ar';
+        //get data from images with type 'فريق'or 'team'
+        $team = \App\Models\Image::where('type_ar', 'فريق')->orWhere('type_en', 'team')->get();
+        /* dd($team); */
     @endphp
 
     {{-- seo --}}
@@ -388,120 +391,50 @@
             </div>
 
             <!-- Team cards with staggered animation -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="rounded-lg border border-[#f59c00] bg-gradient-to-br from-[#f59c00] to-[#fcf7f9] p-6 shadow-sm transition-all duration-500 group relative overflow-hidden hover:border-[#f59c00] hover:scale-105 animate-fade-in-up"
-                    style="animation-delay: 100ms">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#f59c00]/5 to-[#f59c00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                    <div
-                        class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#f59c00] to-[#f59c00] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500">
-                    </div>
-                    <div class="relative z-10 text-center pt-12">
-                        <div class="relative mb-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+                {{-- team from database if found  --}}
+                @if ($team->isNotEmpty())
+                    @foreach ($team as $member)
+                        <div class="rounded-lg border border-[#f59c00] bg-gradient-to-br from-[#f59c00] to-[#fcf7f9] p-6 shadow-sm transition-all duration-500 group relative overflow-hidden hover:border-[#f59c00] hover:scale-105 animate-fade-in-up min-w-80"
+                            style="animation-delay: {{ 300 + $loop->index * 100 }}ms">
                             <div
-                                class="w-32 h-32 mx-auto rounded-full border-4 border-[#f59c00] group-hover:border-[#f59c00] transition-all duration-500 shadow-2xl overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                                    alt="{{ $isRtl ? 'جون دو' : 'John Doe' }}"
-                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                                    onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'">
+                                class="absolute inset-0 bg-gradient-to-br from-[#f59c00]/5 to-[#f59c00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
                             <div
-                                class="absolute inset-x-0 inset-y-8 bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl">
+                                class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#f59c00] to-[#f59c00] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500">
+                            </div>
+                            <div class="relative z-10 text-center pt-12">
+                                <div class="relative mb-8">
+                                    <div
+                                        class="w-32 h-32 mx-auto rounded-full border-4 border-[#f59c00] group-hover:border-[#f59c00] transition-all duration-500 shadow-2xl overflow-hidden">
+                                        <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}"
+                                            class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                                            onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'">
+                                    </div>
+                                    <div
+                                        class="absolute inset-x-0 inset-y-8 bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl">
+                                    </div>
+                                </div>
+                                <h3
+                                    class="text-2xl font-bold text-[#f59c00] mb-3 group-hover:text-[#f59c00] transition-colors duration-300">
+                                    {{ $member->name }}
+                                </h3>
+                                <div
+                                    class="inline-flex items-center rounded-full border border-[#f59c00] bg-gradient-to-r from-[#f59c00]/20 to-[#f59c00]/20
+                                    px-4 py-2 text-sm font-medium text-[#f59c00] group-hover:bg-gradient-to-r group-hover:from-[#f59c00]/30 group-hover:to-[#f59c00]/30 transition-all duration-300">
+                                    {{ $member->short_description }}
+                                </div>
+                            </div>
+                            <div class="relative z-10 text-center pb-12">
+                                <p
+                                    class="text-gray-100 text-lg leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
+                                    {{ $member->caption }}
+                                </p>
                             </div>
                         </div>
-                        <h3
-                            class="text-2xl font-bold text-[#f59c00] mb-3 group-hover:text-[#f59c00] transition-colors duration-300">
-                            {{ $isRtl ? 'جون دو' : 'John Doe' }}
-                        </h3>
-                        <div
-                            class="inline-flex items-center rounded-full border border-[#f59c00] bg-gradient-to-r from-[#f59c00]/20 to-[#f59c00]/20 px-4 py-2 text-sm font-medium text-[#f59c00] group-hover:bg-gradient-to-r group-hover:from-[#f59c00]/30 group-hover:to-[#f59c00]/30 transition-all duration-300">
-                            {{ $isRtl ? 'المؤسس والرئيس التنفيذي' : 'Founder & CEO' }}
-                        </div>
-                    </div>
-                    <div class="relative z-10 text-center pb-12">
-                        <p
-                            class="text-gray-100 text-lg leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
-                            {{ $isRtl ? 'رائد أعمال متسلسل شغوف بالتكنولوجيا المدمرة ولديه رؤية لجعل الابتكار متاحًا للجميع.' : 'A serial entrepreneur with a passion for disruptive technology and a vision to make innovation accessible to all.' }}
-                        </p>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
 
-                <div class="rounded-lg border border-[#f59c00] bg-gradient-to-br from-[#f59c00] to-[#fcf7f9] p-6 shadow-sm transition-all duration-500 group relative overflow-hidden hover:border-[#f59c00] hover:scale-105 animate-fade-in-up"
-                    style="animation-delay: 200ms">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#f59c00]/5 to-[#f59c00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                    <div
-                        class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#f59c00] to-[#f59c00] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500">
-                    </div>
-                    <div class="relative z-10 text-center pt-12">
-                        <div class="relative mb-8">
-                            <div
-                                class="w-32 h-32 mx-auto rounded-full border-4 border-[#f59c00] group-hover:border-[#f59c00] transition-all duration-500 shadow-2xl overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80"
-                                    alt="{{ $isRtl ? 'جين سميث' : 'Jane Smith' }}"
-                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                                    onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'">
-                            </div>
-                            <div
-                                class="absolute inset-x-0 inset-y-8 bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl">
-                            </div>
-                        </div>
-                        <h3
-                            class="text-2xl font-bold text-[#f59c00] mb-3 group-hover:text-[#f59c00] transition-colors duration-300">
-                            {{ $isRtl ? 'جين سميث' : 'Jane Smith' }}
-                        </h3>
-                        <div
-                            class="inline-flex items-center rounded-full border border-[#f59c00] bg-gradient-to-r from-[#f59c00]/20 to-[#f59c00]/20 px-4 py-2 text-sm font-medium text-[#f59c00] group-hover:bg-gradient-to-r group-hover:from-[#f59c00]/30 group-hover:to-[#f59c00]/30 transition-all duration-300">
-                            {{ $isRtl ? 'رئيسة المنتج' : 'Head of Product' }}
-                        </div>
-                    </div>
-                    <div class="relative z-10 text-center pb-12">
-                        <p
-                            class="text-gray-100 text-lg leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
-                            {{ $isRtl ? 'خبيرة تجربة المستخدم واستراتيجية المنتج، تضمن حلولنا أن تكون سريعة وممتعة للاستخدام.' : 'An expert in user experience and product strategy, Jane ensures our solutions are not just fast, but also delightful to use.' }}
-                        </p>
-                    </div>
-                </div>
-
-                <div class="rounded-lg border border-[#f59c00] bg-gradient-to-br from-[#f59c00] to-[#fcf7f9] p-6 shadow-sm transition-all duration-500 group relative overflow-hidden hover:border-[#f59c00] hover:scale-105 animate-fade-in-up"
-                    style="animation-delay: 300ms">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#f59c00]/5 to-[#f59c00]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-                    <div
-                        class="absolute -inset-1 rounded-lg bg-gradient-to-r from-[#f59c00] to-[#f59c00] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500">
-                    </div>
-                    <div class="relative z-10 text-center pt-12">
-                        <div class="relative mb-8">
-                            <div
-                                class="w-32 h-32 mx-auto rounded-full border-4 border-[#f59c00] group-hover:border-[#f59c00] transition-all duration-500 shadow-2xl overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1579783483458-323a63162788?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=728&q=80"
-                                    alt="{{ $isRtl ? 'مايكل تشن' : 'Michael Chen' }}"
-                                    class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                                    onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'">
-                            </div>
-                            <div
-                                class="absolute inset-x-0 inset-y-8 bg-gradient-to-r from-[#f59c00] to-[#f59c00] rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl">
-                            </div>
-                        </div>
-                        <h3
-                            class="text-2xl font-bold text-[#f59c00] mb-3 group-hover:text-[#f59c00] transition-colors duration-300">
-                            {{ $isRtl ? 'مايكل تشن' : 'Michael Chen' }}
-                        </h3>
-                        <div
-                            class="inline-flex items-center rounded-full border border-[#f59c00] bg-gradient-to-r from-[#f59c00]/20 to-[#f59c00]/20 px-4 py-2 text-sm font-medium text-[#f59c00] group-hover:bg-gradient-to-r group-hover:from-[#f59c00]/30 group-hover:to-[#f59c00]/30 transition-all duration-300">
-                            {{ $isRtl ? 'المهندس الرئيسي' : 'Lead Engineer' }}
-                        </div>
-                    </div>
-                    <div class="relative z-10 text-center pb-12">
-                        <p
-                            class="text-gray-100 text-lg leading-relaxed group-hover:text-gray-100 transition-colors duration-300">
-                            {{ $isRtl ? 'العبقري المعماري وراء بنية التقنية لدينا، يبني أنظمة قابلة للتوسع وآمنة.' : 'The architectural genius behind our technology stack, Michael builds scalable and secure systems that power our solutions.' }}
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
