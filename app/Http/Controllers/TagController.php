@@ -6,7 +6,7 @@ use App\Models\Tag;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateTagRequest;
 use App\Models\Image;
-use Illuminate\Container\Attributes\Storage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class TagController extends Controller
@@ -104,6 +104,14 @@ class TagController extends Controller
         // add auth check
         if (!Auth::check()) {
             return redirect()->route('login', ['lang' => app()->getLocale()])->with('error', 'You must be logged in to access this page.');
+        }
+        // delete associated images
+        foreach ($tag->images as $image) {
+            // delete image file from storage
+            if ($image->image) {
+                Storage::disk('public')->delete($image->image);
+            }
+            $image->delete();
         }
 
         $tag->delete();
