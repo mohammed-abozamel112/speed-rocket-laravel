@@ -152,6 +152,11 @@ class Blog extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function getRouteKeyName()
     {
         $locale = app()->getLocale();

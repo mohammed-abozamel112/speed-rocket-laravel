@@ -1,4 +1,11 @@
 <x-master-layout>
+   <x-slot name="head">
+        <x-seo :title="app()->getLocale() === 'en' ? 'Edit Tag - Speed Rocket Company' : 'تعديل العلامة - شركة سبيد روكت'" :description="app()->getLocale() === 'en' ? 'Edit the details of your tag including name, description, price, and image. Ensure your tags are up-to-date and relevant.' : 'قم بتعديل تفاصيل علامتك بما في ذلك الاسم والوصف والسعر والصورة. تأكد من أن علامتك محدثة وذات صلة.'" :keywords="app()->getLocale() === 'en'
+            ? 'edit tag, update tag, tag details, tag image, tag price'
+            : 'تعديل العلامة , تحديث العلامة , تفاصيل العلامة , صورة العلامة , سعر العلامة'" :canonical="url()->current()" :og-title="app()->getLocale() === 'en' ? 'Edit Tag - Speed Rocket Company' : 'تعديل العلامة - شركة سبيد روكت'"
+            :og-description="app()->getLocale() === 'en' ? 'Edit the details of your tag including name, description, price, and image. Ensure your tags are up-to-date and relevant.' : 'قم بتعديل تفاصيل علامتك بما في ذلك الاسم والوصف والسعر والصورة. تأكد من أن علامتك محدثة وذات صلة.'"
+            :og-image="asset('storage/logo.png')" :twitter-card="asset('storage/logo.png')" :twitter-site="'@SpeedRocketCo'" :twitter-creator="'@SpeedRocketCo'" />
+    </x-slot>
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-2xl mx-auto">
             <h1 class="text-3xl font-bold text-gray-800 mb-6">Edit Tag</h1>

@@ -2,6 +2,30 @@
     @php
         $isRtl = app()->getLocale() === 'ar';
     @endphp
+    <x-slot name="head">
+        {{--     'name_ar',
+        'name_en',
+        'slug_ar',
+        'slug_en',
+        'short_description_ar',
+        'short_description_en',
+        'sub_title1_ar',
+        'sub_title1_en',
+        'sub_title2_ar',
+        'sub_title2_en',
+        'sub_title3_ar',
+        'sub_title3_en',
+        'description1_ar',
+        'description1_en',
+        'description2_ar',
+        'description2_en',
+        'description3_ar',
+        'description3_en',
+        'image',
+        'status', --}}
+        <x-seo :title="$service->name ?? 'Default Title'" :description="Str::limit($service->short_description, 150)" :keywords="$keywords ?? 'default, keywords'" :canonical="url()->current()" :og-title="$service->name ?? null"
+            :og-description="$service->short_description ?? null" :og-image="$service->image ? asset('storage/' . $service->image) : null" :twitter-card="$service->image ? asset('storage/' . $service->image) : null" :twitter-site="$twitterSite ?? null" :twitter-creator="$twitterCreator ?? null" />
+    </x-slot>
     @auth
         <div class="container mx-auto px-4">
             <h1 class="text-3xl font-bold mb-4">{{ $service->title }}</h1>

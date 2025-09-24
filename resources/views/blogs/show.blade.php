@@ -1,15 +1,12 @@
 <x-master-layout>
-    <x-slot name="header">
-        <meta name="description" content="{{ Str::limit($blog->short_description, 160) }}">
-        <meta property="og:title" content="{{ $blog->title }}">
-        <meta property="og:description" content="{{ Str::limit($blog->short_description, 160) }}">
-        @if ($blog->image)
-            <meta property="og:image" content="{{ asset('storage/' . $blog->image) }}">
-        @endif
-        <meta property="og:type" content="article">
-        <meta property="article:published_time" content="{{ $blog->created_at->toIso8601String() }}">
-        <meta property="article:author" content="{{ $blog->user->name ?? 'Admin' }}">
+    @php
+        $isRtl = app()->getLocale() === 'ar';
+    @endphp
+    <x-slot name="head">
+        <x-seo :title="$blog->title ?? 'Default Title'" :description="Str::limit($blog->description, 150)" :keywords="$keywords ?? 'default, keywords'" :canonical="url()->current()" :og-title="$blog->title ?? null"
+            :og-description="$blog->description ?? null" :og-image="$blog->image ? asset('storage/' . $blog->image) : null" :twitter-card="$blog->image ? asset('storage/' . $blog->image) : null" :twitter-site="$twitterSite ?? null" :twitter-creator="$twitterCreator ?? null" />
     </x-slot>
+
 
     <article class="container mx-auto px-4 py-8 max-w-4xl">
         <!-- Back Button -->
@@ -132,6 +129,206 @@
                 </section>
             @endif
         </div>
+        {{-- comments section --}}
+
+        <div class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                {{ app()->getLocale() === 'en' ? 'Comments' : 'التعليقات' }}
+            </h3>
+            @if ($blog->comments && $blog->comments->count() > 0)
+                <div class="grid md:grid-cols-2 gap-8">
+                    @foreach ($blog->comments as $comment)
+                        <div
+                            class="relative p-8 rounded-2xl bg-[#f59b0034] hover:shadow-xl transition-all duration-300 hover:scale-105 {{ $isRtl ? 'text-right' : 'text-left' }}">
+                            <div class="absolute top-4 {{ $isRtl ? 'right-4' : 'left-4' }} text-[#f59c00] opacity-20">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path
+                                        d="M17 8h2a2 2 0 0 1 2 2v3a4 4 0 0 1-4 4h-1m-8-7h2a2 2 0 0 1 2 2v3a4 4 0 0 1-4 4H7" />
+                                </svg>
+                            </div>
+                            <div class="flex justify-evenly items-center mb-6 {{ $isRtl ? 'flex-row-reverse' : '' }}">
+                                <img loading="lazy" src="{{ $comment->image ?? asset('storage/profile.png') }}"
+                                    onerror="this.onerror=null; this.src='{{ asset('storage/profile.png') }}'"
+                                    alt="{{ $comment->name }}"
+                                    class="w-16 h-16 rounded-full object-cover {{ $isRtl ? 'mr-4' : 'ml-4' }}">
+                                <div class="{{ $isRtl ? 'text-right' : 'text-left' }}">
+                                    <h4 class="text-lg font-semibold text-[#f59c00]">{{ $comment->name }}</h4>
+                                </div>
+                            </div>
+
+                            <p class="text-gray-600 leading-relaxed italic {{ $isRtl ? 'text-right' : 'text-left' }}">
+                                "{{ $comment->comment }}"
+                            </p>
+                            <div class="flex my-4 text-yellow-400 justify-center">
+                                @for ($i = 0; $i < 5; $i++)
+                                    @if ($i < ($comment->rate ?? 5))
+                                        &#9733;
+                                    @else
+                                        <span class="text-gray-300">&#9733;</span>
+                                    @endif
+                                @endfor
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p class="text-gray-600">
+                    {{ app()->getLocale() === 'en' ? 'No comments yet. Be the first to comment!' : 'لا توجد تعليقات بعد. كن أول من يعلق!' }}
+                </p>
+            @endif
+        </div>
+        {{-- form to add comment ajax --}}
+        <div class="mt-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                {{ app()->getLocale() === 'en' ? 'Add a Comment' : 'أضف تعليقًا' }}
+            </h3>
+            <form id="commentForm" method="POST"
+                action="{{ route('comments.store', ['lang' => app()->getLocale()]) }}">
+                @csrf
+                <input type="hidden" name="blog_id" value="{{ $blog->id }}">
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="mb-4">
+                    <label for="name" class="block text-gray-700 font-semibold mb-2">
+                        {{ app()->getLocale() === 'en' ? 'Name' : 'الاسم' }}
+                    </label>
+                    <input type="text" id="name" name="name" required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#f59c00]">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 font-semibold mb-2">
+                        {{ app()->getLocale() === 'en' ? 'Email' : 'البريد الإلكتروني' }}
+                    </label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#f59c00]">
+                </div>
+                </div>
+                <div class="mb-4">
+                    <label for="comment" class="block text-gray-700 font-semibold mb-2">
+                        {{ app()->getLocale() === 'en' ? 'Comment' : 'التعليق' }}
+                    </label>
+                    <textarea id="comment" name="comment" rows="4" required
+                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#f59c00]"></textarea>
+                </div>
+                {{-- rate --}}
+                <style>
+                    .rating-component .rating {
+                        display: flex;
+                        gap: 0.25rem;
+                        align-items: center;
+                        justify-content: flex-start;
+                        --stroke: #C7CCC7;
+                        --fill: #FFA534;
+                    }
+
+                    /* visually hide native radio but keep it accessible/focusable */
+                    .rating-component .rating input {
+                        position: absolute;
+                        opacity: 0;
+                        width: 0;
+                        height: 0;
+                    }
+
+                    .rating-component .rating label {
+                        cursor: pointer;
+                        display: inline-flex;
+                    }
+
+                    .rating-component .rating svg {
+                        width: 1.8rem;
+                        height: 1.8rem;
+                        fill: transparent;
+                        stroke: var(--stroke);
+                        stroke-linejoin: bevel;
+                        transition: stroke .15s, fill .15s, transform .08s;
+                    }
+
+                    /* hover fills this star and all stars to its right (since markup is 5..1) */
+                    .rating-component .rating label:hover svg,
+                    .rating-component .rating label:hover~label svg {
+                        stroke: var(--fill);
+                    }
+
+                    /* checked fills this star and all stars to its right */
+                    .rating-component .rating input:checked~label svg {
+                        fill: var(--fill);
+                        stroke: var(--fill);
+                        transform: scale(1.05);
+                    }
+
+                    .rating-component .sr-only {
+                        position: absolute !important;
+                        height: 1px;
+                        width: 1px;
+                        overflow: hidden;
+                        clip: rect(1px, 1px, 1px, 1px);
+                        white-space: nowrap;
+                    }
+                </style>
+
+                <div class="rating-component mb-4 flex flex-col place-items-center" aria-label="{{ __('Rating') }}">
+                    <span class="block text-gray-700 font-semibold mb-2">{{ app()->getLocale()==='en'?'Rating':'التقييم' }}</span>
+                    <div class="rating" role="radiogroup">
+                        {{-- highest star on the left (5 .. 1) --}}
+                        <input type="radio" id="star-5" name="rate" value="5"
+                            {{ old('rate') == 5 ? 'checked' : '' }} required>
+                        <label for="star-5" title="5 stars" aria-label="5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-hidden="true">
+                                <path
+                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            </svg>
+                        </label>
+
+                        <input type="radio" id="star-4" name="rate" value="4"
+                            {{ old('rate') == 4 ? 'checked' : '' }}>
+                        <label for="star-4" title="4 stars" aria-label="4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-hidden="true">
+                                <path
+                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            </svg>
+                        </label>
+
+                        <input type="radio" id="star-3" name="rate" value="3"
+                            {{ old('rate') == 3 ? 'checked' : '' }}>
+                        <label for="star-3" title="3 stars" aria-label="3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-hidden="true">
+                                <path
+                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            </svg>
+                        </label>
+
+                        <input type="radio" id="star-2" name="rate" value="2"
+                            {{ old('rate') == 2 ? 'checked' : '' }}>
+                        <label for="star-2" title="2 stars" aria-label="2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-hidden="true">
+                                <path
+                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            </svg>
+                        </label>
+
+                        <input type="radio" id="star-1" name="rate" value="1"
+                            {{ old('rate') == 1 ? 'checked' : '' }}>
+                        <label for="star-1" title="1 star" aria-label="1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img"
+                                aria-hidden="true">
+                                <path
+                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z" />
+                            </svg>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit"
+                    class="bg-[#f59c00] hover:bg-[#f59b00c9] text-white px-6 py-2 rounded-lg font-semibold transition-colors w-full m-auto">
+                    {{ app()->getLocale() === 'en' ? 'Submit Comment' : 'إرسال التعليق' }}
+                </button>
+            </form>
+        </div>
+
+
 
 
 

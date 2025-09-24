@@ -2,6 +2,12 @@
     @php
         $isRtl = app()->getLocale() === 'ar';
     @endphp
+    <x-slot name="head">
+        <x-seo :title="app()->getLocale() === 'en' ? 'Speed Rocket Company - Services' : 'شركة سبيد روكت - الخدمات'" :description="app()->getLocale() === 'en' ? 'Explore our diverse range of tags and categories. Find projects, articles, and resources tailored to your interests.' : 'استكشف مجموعتنا المتنوعة من العلامات والفئات. اعثر على المشاريع والمقالات والموارد التي تناسب اهتماماتك.'" :keywords="app()->getLocale() === 'en'
+            ? 'tags, categories, projects, articles, resources'
+            : 'العلامات , الفئات , المشاريع , المقالات , الموارد'" :canonical="url()->current()" :og-title="app()->getLocale() === 'en' ? 'Speed Rocket Company - Services' : 'شركة سبيد روكت - الخدمات'" :og-description="app()->getLocale() === 'en' ? 'Explore our diverse range of tags and categories. Find projects, articles, and resources tailored to your interests.' : 'استكشف مجموعتنا المتنوعة من العلامات والفئات. اعثر على المشاريع والمقالات والموارد التي تناسب اهتماماتك.'"
+            :og-image="asset('storage/logo.png')" :twitter-card="asset('storage/logo.png')" :twitter-site="'@SpeedRocketCo'" :twitter-creator="'@SpeedRocketCo'" />
+    </x-slot>
     @auth
         <div class="container mx-auto p-4">
             @if (session('success'))

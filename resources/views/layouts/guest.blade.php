@@ -8,11 +8,10 @@
     {{-- icon Links? --}}
     <link rel="icon" type="image/png" href="{{ asset('storage/logo.png') }}" />
 
-    <title>{{ app()->getLocale() === 'en' ? 'Speed Rocket Company' : 'شركة سبيد روكت' }}</title>
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
+    {{-- i want to custom slot to get some data from the page of it like seo --}}
+    {{ $head }}
 
 </head>
 

@@ -2,6 +2,14 @@
     @php
         $isRtl = app()->getLocale() === 'ar';
     @endphp
+
+    <x-slot name="head">
+        <x-seo
+        :title="$tag->name ?? 'Default Title'" :description="Str::limit($tag->description, 150)" :keywords="$keywords ?? 'default, keywords'" :canonical="url()->current()" :og-title="$tag->name ?? null"
+            :og-description="$tag->description ?? null" :og-image="$tag->image ? asset('storage/' . $tag->image) : null" :twitter-card="$tag->image ? asset('storage/' . $tag->image) : null" :twitter-site="$twitterSite ?? null" :twitter-creator="$twitterCreator ?? null" />
+    </x-slot>
+
+
     @auth
         <x-slot name="header">
             <div class="flex items-center justify-between">
@@ -38,7 +46,8 @@
                             </div>
                             <div>
                                 <dt class="text-sm font-medium text-gray-500">Description</dt>
-                                <dd class="text-sm text-gray-900">{{ $tag->description ?? 'No description available' }}</dd>
+                                <dd class="text-sm text-gray-900">{{ $tag->description ?? 'No description available' }}
+                                </dd>
                             </div>
                         </dl>
                     </div>
@@ -279,6 +288,7 @@
             [dir="rtl"] .cardtag:hover::before {
                 clip-path: circle(110vw at center) !important;
             }
+
             [dir="rtl"] .cardtag:nth-child(1)::before {
                 bottom: 0;
                 left: 0;
@@ -328,14 +338,15 @@
             }
         </style>
         <section class="min-h-screen bg-gray-900 text-center py-20 px-8 xl:px-0 flex flex-col justify-center">
-            <span class="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center">{{app()->getLocale()==='en'?'we are offering some images':'نعرض بعض الصور '}} <svg
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            <span
+                class="text-gray-400 text-lg max-w-lg mx-auto mb-2 capitalize flex items-center">{{ app()->getLocale() === 'en' ? 'we are offering some images' : 'نعرض بعض الصور ' }}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="text-[#f59c00] ml-3 w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                 </svg>
             </span>
             <h1 class="text-white text-4xl md:text-5xl xl:text-6xl font-semibold max-w-3xl mx-auto mb-16 leading-snug">
-                {{app()->getLocale()==='en'?'new way to explore':'طريقة جديدة للاستكشاف'}}</h1>
+                {{ app()->getLocale() === 'en' ? 'new way to explore' : 'طريقة جديدة للاستكشاف' }}</h1>
             @foreach ($imagesTags->chunk(4) as $chunk)
                 <div class="grid-offer grid sm:grid-cols-2 md:grid-cols-2 gap-5 max-w-5xl mx-auto mb-8">
                     @foreach ($chunk as $image)

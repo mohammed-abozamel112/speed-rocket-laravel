@@ -11,7 +11,9 @@
                     <div class="flex items-center">
                         <div class="flex flex-shrink-0 items-center space-x-2">
                             <div class="flex h-12 w-12 items-center justify-center">
-                                <img src="{{ asset('storage/logo.png') }}" alt="">
+                                <a class="w-full" href="{{ route('home', ['lang' => app()->getLocale()]) }}">
+                                    <img src="{{ asset('storage/logo.png') }}" alt="">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +52,7 @@
                                 {{ $link['name'] }}
                             </a>
                         @endforeach
-                        <a href="{{route('consultant',app()->getLocale())}}" target="_blank"
+                        <a href="{{ route('consultant', app()->getLocale()) }}" target="_blank"
                             class="min-w-max bg-[#f59c00] hover:bg-[#002a4d] text-white px-6 py-1 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
                             {{ app()->getLocale() === 'en' ? 'Schedule a Consultation' : 'اطلب استشارتك' }}
                         </a>

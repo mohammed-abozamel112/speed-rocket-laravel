@@ -1,4 +1,12 @@
 <x-master-layout>
+    <x-slot name="head">
+        <x-seo :title="app()->getLocale()==='en'?'Speed Rocket Company':'شركة سبيد روكت'" :description="__(
+            'Welcome to Speed Rocket Company, your trusted partner for integrated import services from China. We ensure quality, efficiency, and competitive pricing for all your sourcing needs.',
+        )" :keywords="'import, sourcing, China, logistics, customs, quality assurance, competitive pricing'" :canonical="url()->current()" :og-title="__('Home - Speed Rocket Company')"
+            :og-description="__(
+                'Welcome to Speed Rocket Company, your trusted partner for integrated import services from China. We ensure quality, efficiency, and competitive pricing for all your sourcing needs.',
+            )" :og-image="asset('storage/logo.png')" :twitter-card="asset('storage/logo.png')" :twitter-site="'@SpeedRocketCo'" :twitter-creator="'@SpeedRocketCo'" />
+    </x-slot>
     @php
         $isRtl = app()->getLocale() === 'ar';
     @endphp
@@ -599,67 +607,68 @@
                 <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-300">
                     {{ app()->getLocale() === 'en' ? 'Check out our latest blog posts and updates.' : 'اطلع على أحدث منشورات المدونة والتحديثات.' }}
                 </p>
-                 {{-- create a to all blogs --}}
+                {{-- create a to all blogs --}}
                 <div class="m-6">
                     <a href="{{ route('blogs.index', app()->getLocale()) }}"
                         class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group inline-flex  justify-center place-content-center place-items-center gap-2">
                         {{ app()->getLocale() === 'en' ? 'View All Blogs' : 'عرض جميع المدونات' }}
-                       @if ($isRtl)
-                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-                        </svg>
-                       @else
-                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-
-                       @endif
-                    </a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($latestPosts as $post)
-               
-                    <div
-                        class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer relative min-h-[20rem] ">
-                        @if ($post->tags->isNotEmpty())
-                            <div class="flex absolute z-50 top-2 gap-2 px-3">
-                                @foreach ($post->tags as $tag)
-                                    <span
-                                        class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-2 py-2 rounded-full text-[.5rem] font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
-                                        {{ $tag->name }}
-                                    </span>
-                                @endforeach
-                            </div>
+                        @if ($isRtl)
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+                            </svg>
                         @else
-                            <span
-                                class="bg-[#f59c00] text-white hover:bg-[#f59b007c] text-xs px-2 py-1 rounded-full inline-block whitespace-nowrap absolute z-50 top-2">
-                                {{ app()->getLocale() === 'en' ? 'general' : 'عام' }}
-                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
                         @endif
-                        <a class="w-full h-full"
-                            href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}">
-                            @if ($post->image)
-                                <img loading="lazy"
-                                    src="{{ $post->image ? $post->image : asset('storage/' . $post->image) }}"
-                                    onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'"
-                                    alt="{{ $post->title }}" class="w-full h-full object-cover hover:blur-sm" />
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($latestPosts as $post)
+                        <div
+                            class="bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer relative min-h-[20rem] ">
+                            @if ($post->tags->isNotEmpty())
+                                <div class="flex absolute z-50 top-2 gap-2 px-3">
+                                    @foreach ($post->tags as $tag)
+                                        <span
+                                            class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-2 py-2 rounded-full text-[.5rem] font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">
+                                            {{ $tag->name }}
+                                        </span>
+                                    @endforeach
+                                </div>
+                            @else
+                                <span
+                                    class="bg-[#f59c00] text-white hover:bg-[#f59b007c] text-xs px-2 py-1 rounded-full inline-block whitespace-nowrap absolute z-50 top-2">
+                                    {{ app()->getLocale() === 'en' ? 'general' : 'عام' }}
+                                </span>
                             @endif
-                            <div class="p-6 absolute bottom-0">
-                                <h3 class="text-2xl font-bold mb-2">{{ Str::limit($post->title, 50) }}</h3>
-                                <p class="text-gray-300 mb-4">
-                                    {{ Str::limit($post->short_description, ) }}</p>
-                                <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}"
-                                    class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
+                            <a class="w-full h-full"
+                                href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}">
+                                @if ($post->image)
+                                    <img loading="lazy"
+                                        src="{{ $post->image ? $post->image : asset('storage/' . $post->image) }}"
+                                        onerror="this.onerror=null; this.src='{{ asset('storage/main.png') }}'"
+                                        alt="{{ $post->title }}"
+                                        class="w-full h-full object-cover hover:blur-sm" />
+                                @endif
+                                <div class="p-6 absolute bottom-0">
+                                    <h3 class="text-2xl font-bold mb-2">{{ Str::limit($post->title, 50) }}</h3>
+                                    <p class="text-gray-300 mb-4">
+                                        {{ Str::limit($post->short_description) }}</p>
+                                    <a href="{{ route('blogs.show', ['lang' => app()->getLocale(), 'blog' => $post->slug]) }}"
+                                        class="bg-[#f59c00] hover:bg-[#f59b0034] text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-xl hover:-translate-y-1 group">{{ app()->getLocale() === 'en' ? 'Read More' : 'اعرف المزيد' }}</a>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
     </section>
     {{-- blogs --}}
 

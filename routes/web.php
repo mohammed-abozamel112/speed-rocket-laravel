@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ConsultantController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -42,6 +43,12 @@ Route::prefix('{lang}')->middleware(SetLocale::class)->group(function () {
         Route::get('/{service}/edit', [ServiceController::class, 'edit'])->name('edit');
         Route::put('/{service}', [ServiceController::class, 'update'])->name('update');
         Route::delete('/{service}', [ServiceController::class, 'destroy'])->name('destroy');
+    });
+    // comments
+    Route::prefix('comments')->as('comments.')->group(function () {
+        Route::get('/', [CommentController::class, 'index'])->name('index');
+        Route::post('/', [CommentController::class, 'store'])->name('store');
+        Route::delete('/{comment}', [CommentController::class, 'destroy'])->name('destroy');
     });
 
     // blog routes
