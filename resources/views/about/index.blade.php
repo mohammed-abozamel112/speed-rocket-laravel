@@ -3,6 +3,13 @@
         $isRtl = app()->getLocale() === 'ar';
     @endphp
 
+    {{-- seo --}}
+    <x-slot name="head">
+        <x-seo :title="$isRtl ? 'من نحن - شركة سبيد روكت' : 'About Us - Speed Rocket Company'" :description="$isRtl
+            ? 'اكتشف كيف تقود شركة سبيد روكت الابتكار الرقمي بسرعة الضوء. نحن الشريك الموثوق للشركات الطموحة التي تسعى لتحويل صناعتها.'
+            : 'Discover how Speed Rocket Company is driving digital innovation at light speed. We are the trusted partner for ambitious companies looking to transform their industry.'" />
+    </x-slot>
+
     <section class="w-full min-h-screen relative py-32 overflow-hidden">
 
 

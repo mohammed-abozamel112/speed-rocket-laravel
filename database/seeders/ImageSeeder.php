@@ -210,6 +210,32 @@ class ImageSeeder extends Seeder
                 'type_ar' => 'أعمال',
                 'type_en' => 'works',
             ],
+            // image with type contact
+            [
+                'name_ar' => 'اتصل بنا',
+                'name_en' => 'Contact Us',
+
+                'image' => 'images/contact.png',
+
+                'alt_text_ar' => 'تواصل مع شركة سبيد روكت لتحويل أفكارك إلى واقع.',
+                'alt_text_en' => 'Connect with Speed Rocket Company to turn your ideas into reality.',
+
+                'short_description_ar' => 'نحن هنا لمساعدتك في رحلتك الرقمية.',
+                'short_description_en' => 'We are here to assist you on your digital journey.',
+
+                'caption_ar' => 'اتصل بشركة سبيد روكت لتحويل أفكارك إلى واقع. نحن هنا لمساعدتك في رحلتك الرقمية.',
+                'caption_en' => 'Connect with Speed Rocket Company to turn your ideas into reality. We are here to assist you on your digital journey.',
+
+                'type_ar' => 'تواصل',
+                'type_en' => 'contact',
+
+                'service_id' => null,
+                'blog_id' => null,
+                'tag_id' => null,
+
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
         foreach ($images as $img) {
             Image::create($img);

@@ -13,9 +13,10 @@
         $contactImage = \App\Models\Image::where('type_en', 'contact')->first();
     @endphp
     <x-slot name="head">
-        <x-seo
-        :title="$isRtl ? 'اتصل بنا - شركة سبيد روكت' : 'Contact Us - Speed Rocket Company'"
-        />
+        <x-seo :title="$isRtl ? 'اتصل بنا - شركة سبيد روكت' : 'Contact Us - Speed Rocket Company'" :description="$isRtl
+            ? 'تواصل مع شركة سبيد روكت لتحويل أفكارك إلى واقع. نحن هنا لمساعدتك في رحلتك الرقمية.'
+            : 'Connect with Speed Rocket Company to turn your ideas into reality. We are here to assist you on your digital journey.'"
+             />
     </x-slot>
 
     <div class="min-h-screen w-full {{ $dir }}" style="background-color: #fcf7f9;">
@@ -177,8 +178,8 @@
                                             style="color: #f59c00;">
                                             {{ $isRtl ? 'الرسالة *' : 'Message *' }}
                                         </label>
-                                        <textarea name="message" placeholder="{{ $isRtl ? 'أخبرنا عن مشروعك...' : 'Tell us about your project...' }}" required
-                                            rows="6"
+                                        <textarea name="message" placeholder="{{ $isRtl ? 'أخبرنا عن مشروعك...' : 'Tell us about your project...' }}"
+                                            required rows="6"
                                             class="border-2 focus:border-red-300 transition-colors resize-none w-full px-3 py-2 border-gray-300 rounded-md {{ $textAlign }}">{{ old('message') }}</textarea>
                                         @error('message')
                                             <p class="text-red-500 text-sm mt-1 {{ $textAlign }}">
