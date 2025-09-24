@@ -433,6 +433,11 @@
                             </div>
                         </div>
                     @endforeach
+                @else
+                    <p class="text-center text-gray-400 col-span-3">
+                        {{-- لم يتم إضافة اي من اعضاء الفريق إلي الموقع حاليا بناءا علي رغباتهم الشخصية --}}
+                        {{ $isRtl ? 'لم يتم إضافة أي من أعضاء الفريق إلى الموقع حالياً بناءً على رغباتهم الشخصية.' : 'No team members have been added to the site currently based on their personal preferences.' }}
+                    </p>
                 @endif
 
             </div>
