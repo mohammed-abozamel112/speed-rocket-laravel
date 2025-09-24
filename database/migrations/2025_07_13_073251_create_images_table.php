@@ -26,9 +26,9 @@ return new class extends Migration {
             $table->text('caption_ar')->nullable();
             $table->text('caption_en')->nullable();
             // type of the image (e.g., blog, service, etc.)
-            $table->enum('type_ar', ['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول','تواصل'])
+            $table->enum('type_ar', ['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول','تواصل','فريق'])
                 ->default('أعمال');
-            $table->enum('type_en', ['blog', 'service', 'gallery', 'profile', 'client', 'works', 'home', 'about','contact'])
+            $table->enum('type_en', ['blog', 'service', 'gallery', 'profile', 'client', 'works', 'home', 'about','contact','team'])
                 ->default('works');
             // foreign key for services
             $table->foreignId('service_id')->nullable()->constrained('services')->onDelete('cascade');

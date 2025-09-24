@@ -143,6 +143,8 @@
                 {{-- contact --}}
                     <option value="contact" {{ old('type_en', $image->type_en) == 'contact' ? 'selected' : '' }}>Contact
                     </option>
+                    <option value="team" {{ old('type_en', $image->type_en) == 'team' ? 'selected' : '' }}>Team
+                    </option>
                 </select>
                 @if ($errors->has('type_en'))
                     <p class="text-red-500 text-sm mt-1">{{ $errors->first('type_en') }}</p>
@@ -174,6 +176,8 @@
                 {{-- contact --}}
                     <option value="تواصل" {{ old('type_ar', $image->type_ar) == 'تواصل' ? 'selected' : '' }}>اتصال
                     </option>
+                    <option value="فريق" {{ old('type_ar', $image->type_ar) == 'فريق' ? 'selected' : '' }}>فريق
+                    </option>
                 </select>
                 @if ($errors->has('type_ar'))
                     <p class="text-red-500 text-sm mt-1">{{ $errors->first('type_ar') }}</p>
@@ -184,12 +188,13 @@
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2">Current Image:</label>
                 <div class="bg-gray-100 rounded-lg p-4 mb-2">
-                    <img src="{{ asset('storage/' . $image->path_url) }}" alt="{{ $image->alt_text }}"
+                    <img src="{{ asset('storage/' . $image->image) }}" alt="{{ $image->alt_text }}"
                         class="w-48 h-48 object-cover rounded">
                 </div>
 
                 <label for="new_image"
                     class="block text-gray-700 font-bold mb-2 mt-4">{{ $isRtl ? 'تحميل صورة جديدة (اختياري):' : 'Upload New Image (optional):' }}</label>
+               
                 <input type="file" name="image" id="new_image"
                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @error('image')
@@ -275,6 +280,7 @@
                 'الرئيسية': 'home',
                 'حول': 'about',
                 'تواصل': 'contact',
+                'فريق': 'team',
                 //en to ar
                 'blog': 'مدونه',
                 'service': 'خدمة',
@@ -285,6 +291,7 @@
                 'home': 'الرئيسية',
                 'about': 'حول',
                 'contact': 'تواصل',
+                'team': 'فريق'
             };
 
             typeArSelect.addEventListener('change', function() {

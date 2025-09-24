@@ -39,11 +39,11 @@ class StoreImageRequest extends FormRequest
             'caption_en' => 'nullable|string',
             'type_ar' => [
                 'required',
-                Rule::in(['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول','تواصل']),
+                Rule::in(['مدونه', 'خدمة', 'معرض', 'ملف شخصي', 'عميل', 'أعمال', 'الرئيسية', 'حول','تواصل','فريق']),
             ],
             'type_en' => [
                 'required',
-                Rule::in(['blog', 'service', 'gallery', 'profile', 'client', 'works', 'home', 'about','contact']),
+                Rule::in(['blog', 'service', 'gallery', 'profile', 'client', 'works', 'home', 'about','contact','team']),
             ],
             'service_id' => 'nullable|exists:services,id',
             'blog_id' => 'nullable|exists:blogs,id',
