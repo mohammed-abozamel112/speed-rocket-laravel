@@ -12,6 +12,11 @@
         // image with type contact
         $contactImage = \App\Models\Image::where('type_en', 'contact')->first();
     @endphp
+    <x-slot name="head">
+        <x-seo
+        :title="$isRtl ? 'اتصل بنا - شركة سبيد روكت' : 'Contact Us - Speed Rocket Company'"
+        />
+    </x-slot>
 
     <div class="min-h-screen w-full {{ $dir }}" style="background-color: #fcf7f9;">
         <!-- Hero Section -->
